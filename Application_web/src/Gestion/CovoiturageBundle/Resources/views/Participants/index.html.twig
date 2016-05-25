@@ -1,0 +1,31 @@
+
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Covoiturages list</h1>
+
+    <table class="records_list" border="1">
+        <thead>
+            <tr>
+                <th>dateParticipation</th>
+                <th>idParticipant</th>
+                <th>idCovoiturage</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+              
+               
+                <td>{{ entity.dateParticipation|date('H:i:s')}}</td>
+                <td>{{ entity.idParticipant}}</td>
+                <td>{{ entity.idCovoiturage }}</td>
+              
+               
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% endblock %}

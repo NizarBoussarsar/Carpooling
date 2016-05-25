@@ -1,0 +1,78 @@
+Mes_covoiturages:
+    pattern:  /covoiturage/MesCovoiturages
+    defaults: { _controller: GestionCovoiturageBundle:Covoiturages:MesCovoiturages }    
+covoiturages_find:
+    pattern:  /covoiturage/find
+    defaults: { _controller: GestionCovoiturageBundle:Covoiturages:FindCovoiturage } 
+covoiturages_find_A:
+    pattern:  /covoiturage/findA
+    defaults: { _controller: GestionCovoiturageBundle:Covoiturages:FindaCovoiturage }     
+covoiturages_new:
+    pattern:  /covoiturage/new
+    defaults: { _controller: GestionCovoiturageBundle:Covoiturages:AjoutCovoiturage }  
+covoiturages_show:
+    pattern:  /covoiturage/show{id}
+    defaults: { _controller: GestionCovoiturageBundle:Covoiturages:show }     
+covoiturages_edit:
+    pattern:  /covoiturage/edit{id}
+    defaults: { _controller: GestionCovoiturageBundle:Covoiturages:updateCovoiturage} 
+covoiturages_update:
+    pattern:  /covoiturage/update{id}
+    defaults: { _controller: GestionCovoiturageBundle:Covoiturages:update }  
+covoiturages_deletee:
+    pattern:  /covoiturage/delete{id}
+    defaults: { _controller: GestionCovoiturageBundle:Covoiturages:delete }     
+######################################################################################""
+villes:
+    pattern:  /ville
+    defaults: { _controller: GestionCovoiturageBundle:Villes:ListVilles }
+villes_new:
+    pattern:  /newVille
+    defaults: { _controller: GestionCovoiturageBundle:Villes:AjoutVilles } 
+villes_Findlocalite:
+    pattern:  /Findlocalite/{search}
+    defaults: { _controller: GestionCovoiturageBundle:Villes:Findlocalite } 
+villes_Finddelegation:
+    pattern:  /Finddelegation/{search}
+    defaults: { _controller: GestionCovoiturageBundle:Villes:Finddelegation } 
+villes_Findgouvernorat:
+    pattern:  /Findgouvernorat
+    defaults: { _controller: GestionCovoiturageBundle:Villes:Findgouvernorat }     
+ ######################################################################################""
+detours:
+    pattern:  /detour
+    defaults: { _controller: GestionCovoiturageBundle:Detours:ListDetours }
+detours_new:
+    pattern:  /newdetour
+    defaults: { _controller: GestionCovoiturageBundle:Detours:AjoutDetours } 
+detours_delete:
+    pattern:  /deletedetours{id}
+    defaults: { _controller: GestionCovoiturageBundle:Detours:deletedetours}       
+ ######################################################################################""
+reservations:
+    pattern:  /reservation
+    defaults: { _controller: GestionCovoiturageBundle:Reservations:ListReservations }
+reservations_delete:
+    pattern:  /SupprimerReservation{id}
+    defaults: { _controller: GestionCovoiturageBundle:Reservations:deletereservation }    
+reservation_new:
+    pattern:  /newReservation/{id}/{idd}
+    defaults: { _controller: GestionCovoiturageBundle:Reservations:AjoutReservation }    
+######################################################################################""
+notifications:
+    pattern:  /notification
+    defaults: { _controller: GestionCovoiturageBundle:Notifications:index }
+notification_new:
+    pattern:  /newNotification/{e}/{d}/{c}/{t}
+    defaults: { _controller: GestionCovoiturageBundle:Notifications:AjoutNotification }    
+######################################################################################""    
+participants:
+    pattern:  /participants
+    defaults: { _controller: GestionCovoiturageBundle:Participants:ListParticipants }
+participants_delete:
+    pattern:  /SupprimerParticipants{id}
+    defaults: { _controller: GestionCovoiturageBundle:Participants:deleteParticipants }  
+######################################################################################""  
+test:
+  pattern: /test/{c}
+  defaults: { _controller: GestionCovoiturageBundle:Notifications:test }

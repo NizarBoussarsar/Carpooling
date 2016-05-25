@@ -1,0 +1,13 @@
+{% extends "BackOfficeBackOfficeBundle::layout.html.twig"%}
+
+{% block content %}
+    
+    
+    
+    <center><h1>impossible de supprimer le covoitureur en raison d'assocition avec un covoiturage ou un message il faut procéder par supprimer le covoiturage et/ les message avant de supprimer le covoitureur</h1</center>
+    <hr>
+    <a href="{{path("back_office_userpage")}}"> retourner vers la liste de covoitureur</a>
+    <hr>
+    <a href="{{path("back_office_covpage")}}"> aller vers la liste des covoiturages</a>
+
+{% endblock %}{# empty Twig template #}

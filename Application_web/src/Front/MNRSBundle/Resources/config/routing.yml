@@ -1,0 +1,104 @@
+#Création des views des CRUD de l'entité Messages
+messages_create:
+    pattern: /profile/messages/envoyer
+    defaults: { _controller: FrontMNRSBundle:Messages:envoyer }
+    
+messages_show:
+    pattern: /profile/messages/consulter/{id}
+    defaults: { _controller: FrontMNRSBundle:Messages:show }
+   
+messages_delete:
+    pattern: /profile/messages/delete/{id}
+    defaults: { _controller: FrontMNRSBundle:Messages:delete }
+    
+messages_show_inbox:
+    pattern:  /profile/messages/boite_reception
+    defaults: { _controller: FrontMNRSBundle:Default:showRecieved }
+    
+messages_all_inbox:
+    pattern:  /profile/messages/boite_reception/tout
+    defaults: { _controller: FrontMNRSBundle:Default:showAll }
+
+messages_show_outbox:
+    pattern: /profile/messages/boite_envoie
+    defaults: { _controller: FrontMNRSBundle:Default:showSent }
+    
+#Création des views des CRUD de l'entité Notifications 
+notifications_show:
+    pattern: /profile/notifications/show/{id}
+    defaults: { _controller: FrontMNRSBundle:Notifications:show }
+    
+notifications_nonlues:
+    pattern: /profile/notifications/non_lues
+    defaults: { _controller: FrontMNRSBundle:Default:showNotifications }
+    
+notifications_all:
+    pattern: /profile/notifications/toutes
+    defaults: { _controller: FrontMNRSBundle:Notifications:index }
+    
+#Création des views des CRUD de l'entité Reclamations
+covoiturage_reclamation:
+    pattern:  /reclamations/envoyer
+    defaults: { _controller: FrontMNRSBundle:Reclamations:create }
+    
+reclamations_create:
+    pattern:  /reclamations/envoyer
+    defaults: { _controller: FrontMNRSBundle:Reclamations:new }
+    
+#reclamationsShow:
+#    pattern: /reclamations/
+#    defaults: { _controller: FrontMNRSBundle:Default:showReclamations }
+#    
+#repondre_reclamation:
+#    pattern: /reclamations/repondre/{email}
+#    defaults: { _controller: FrontMNRSBundle:Default:email }
+#    
+#reclamations_show:
+#    pattern: /reclamations/show/{id}
+#    defaults: { _controller: FrontMNRSBundle:Reclamations:show }
+#   
+#reclamations_delete:
+#    pattern: /reclamations/delete/{id}
+#    defaults: { _controller: FrontMNRSBundle:Reclamations:delete }
+    
+#Création des views des statistiques
+statistiques_show:
+    pattern: /profile/statistiques/
+    defaults: { _controller: FrontMNRSBundle:Statistiques:freqVille }
+    
+statistiques_cout:
+    pattern: /profile/statistiques/cout
+    defaults: { _controller: FrontMNRSBundle:Statistiques:coutParMois }
+    
+statistiques_eval:
+    pattern: /profile/statistiques/eval
+    defaults: { _controller: FrontMNRSBundle:Statistiques:eval }
+    
+###################################
+covoiturage_accueil:
+    pattern:  /
+    defaults: { _controller: FrontMNRSBundle:Default:index }
+    
+covoiturage_plusCovoiturages:
+    pattern:  /plus_covoiturages
+    defaults: { _controller: FrontMNRSBundle:Default:plusCovoiturages }
+    
+covoiturage_laCharte:
+    pattern:  /charte
+    defaults: { _controller: FrontMNRSBundle:Default:laCharte }
+    
+covoiturage_faq:
+    pattern:  /faq
+    defaults: { _controller: FrontMNRSBundle:Default:faq }
+
+map_all:
+    pattern: /map/ajout
+    defaults: { _controller: FrontMNRSBundle:map:map }
+    
+map_recherche:
+    pattern: /map/recherche
+    defaults: { _controller: FrontMNRSBundle:map:recherche}
+    
+map_resultat_recherche:
+    pattern: /map/recherche/resultat
+    defaults: { _controller: FrontMNRSBundle:map:index }

@@ -1,0 +1,22 @@
+rayzer_coder_user_homepage:
+    pattern:  /hello
+    defaults: { _controller: RayzerCoderUserBundle:Default:index }
+
+rayzer_coder_user_show:
+    pattern:  /profile/{id}
+    defaults: { _controller: RayzerCoderUserBundle:Default:showUser }
+    requirements:
+        id:  \d+
+        
+rayzer_coder_user_advanced_search:
+    pattern:  /rechercheavance
+    defaults: { _controller: RayzerCoderUserBundle:Default:recherche }
+    
+rayzer_coder_user_simple_search:
+    pattern:  /recherchesimple
+    defaults: { _controller: RayzerCoderUserBundle:Default:simpleRecherche }
+    
+rayzer_coder_user_edit_avatar:
+    pattern:  /profile/edit/avatar
+    defaults: { _controller: RayzerCoderUserBundle:Default:editAvatar }
+

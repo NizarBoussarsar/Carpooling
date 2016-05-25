@@ -1,0 +1,52 @@
+{% extends "BackOfficeBackOfficeBundle::layout.html.twig"%}
+
+{% block content %}
+
+$<center><h2>page modifier Covoitureur</h2></center>
+<br>
+
+<form action="" method="post" {{form_enctype(Form)}} >
+    <table class="text-center">
+{{ form_start(Form) }}
+
+
+    {{ form_errors(Form) }}
+            <div>
+                <tr>
+                    <td> {{ form_label(Form.username) }}</td> 
+                    <td>{{ form_errors(Form.username) }}</td>
+                    <td> {{ form_widget(Form.username) }}</td>
+                </tr>
+            </div>
+            <div>
+                <tr>
+                    <td> {{ form_label(Form.nom) }}</td> 
+                    <td>{{ form_errors(Form.nom) }}</td>
+                    <td> {{ form_widget(Form.nom) }}</td>
+                </tr>
+            </div>
+
+
+            <div>
+                <tr>
+                    <td> {{ form_label(Form.prenom) }}</td> 
+                    <td>{{ form_errors(Form.prenom) }}</td>
+                    <td> {{ form_widget(Form.prenom) }}</td>
+                </tr>
+            </div>
+
+            <div>
+                <tr>
+                    <td> {{ form_label(Form.etat) }}</td> 
+                    <td>{{ form_errors(Form.etat) }}</td>
+                    <td> {{ form_widget(Form.etat) }}</td>
+                </tr>
+            </div>
+
+        </table>
+
+        <input type="submit" value="Mettre a jour" />
+{{ form_end(Form) }}
+    </form>
+
+{% endblock %}{# empty Twig template #}

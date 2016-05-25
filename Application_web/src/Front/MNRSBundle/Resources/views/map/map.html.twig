@@ -1,0 +1,200 @@
+{# empty Twig template #}
+{% extends 'FrontMNRSBundle::layout.html.twig' %}
+{% block style %} 
+
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script>
+    var map, ren, ser;
+    var data = {};
+    var data2 = {};
+    var marker;
+    var infowindow;
+    var doMark = true;
+    var directionsDisplay;
+
+    var wayA;
+    var wayB;
+    var i = 0;
+    function goma()
+    {
+        var mapDiv = document.getElementById('mappy');
+        var mapOptions = {
+            zoom: 6,
+            center: new google.maps.LatLng(34, 9),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(mapDiv, mapOptions);
+        var control = document.createElement('DIV');
+        control.style.padding = '1px';
+        control.style.border = '1px solid #000';
+        control.style.backgroundColor = 'white';
+        control.style.cursor = 'pointer';
+        control.index = 1;
+        map.controls[google.maps.ControlPosition.TOP_RIGHT].push(control);
+        google.maps.event.addDomListener(control, 'click', function() {
+            doMark = false;
+            markNow();
+        });
+
+
+        google.maps.event.addListener(map, "click", function(event) {
+            if (!wayA) {
+                wayA = new google.maps.Marker({
+                    position: event.latLng,
+                    map: map
+                });
+                i++;
+                geocoder1 = new google.maps.Geocoder();
+                geocoder1.geocode({'latLng': wayA.position}, function(results1) {
+                    document.getElementById("positionDepart").value = results1[1].formatted_address.toString();
+                });
+            } else {
+                wayB = new google.maps.Marker({
+                    position: event.latLng,
+                    map: map
+                });
+                i++;
+                geocoder2 = new google.maps.Geocoder();
+                geocoder2.geocode({'latLng': wayB.position}, function(results2) {
+                    document.getElementById("positionArrivee").value = results2[1].formatted_address.toString();
+                });
+
+                ren = new google.maps.DirectionsRenderer({'draggable': true});
+                ren.setMap(map);
+                ren.setPanel(document.getElementById("directionsPanel"));
+                ser = new google.maps.DirectionsService();
+                ser.route({'origin': wayA.getPosition(), 'destination': wayB.getPosition(), 'travelMode': google.maps.DirectionsTravelMode.DRIVING}, function(res, sts) {
+                    if (sts === 'OK')
+                        ren.setDirections(res);
+                });
+            }
+        });
+
+    }
+
+    function marcar() {
+        var endereco = document.getElementById("endereco").value;
+        geocoder = new google.maps.Geocoder();
+        geocoder.geocode({'address': endereco}, function(results, status) {
+            if (status === google.maps.GeocoderStatus.OK) {
+                latlng = results[0].geometry.location;
+                markerInicio = new google.maps.Marker({position: latlng, map: map});
+                map.setCenter(latlng);
+            }
+        });
+    }
+
+    function markNow()
+    {
+        if (doMark === false)
+        {
+            google.maps.event.addListener(map, "click", function(event) {
+                marker = new google.maps.Marker({
+                    position: event.latLng,
+                    map: map
+                });
+                google.maps.event.addListener(marker, "click", function() {
+                    infowindow.open(map, marker);
+                });
+            });
+        }
+    }
+
+    function longlat() {
+        var input1 = wayA.position.toString();
+        var input2 = wayB.position.toString();
+        document.form.LatvilleDep.value = input1;
+        document.form.LatvilleArr.value = input2;
+
+        var latlngStr1 = input1.split(',', 2);
+        var latlngStr2 = input2.split(',', 2);
+
+        var lat1 = parseFloat(latlngStr1[0].substring(1));
+        var lng1 = parseFloat(latlngStr1[1]);
+        var lat2 = parseFloat(latlngStr2[0].substring(1));
+        var lng2 = parseFloat(latlngStr2[1]);
+
+        document.form.LatvilleDep.value = lat1;
+        document.form.LongvilleDep.value = lng1;
+        document.form.LatvilleArr.value = lat2;
+        document.form.LongvilleArr.value = lng2;
+
+        var date = document.form.dateDepart.value;
+        document.form.datestring.value = date.toString();
+
+        var time = document.form.heureDepart.value;
+        document.form.timestring.value = time.toString();
+
+
+
+
+    }
+    </script>
+{% endblock %}
+{% block content %}
+    <div class="shadow main container round" id="contenu" >
+        <div class="content-wrapper">
+            <div class="clear"></div>
+            <hr class="dist-dbl">
+            <div id="mappy" style="float:left; width:40%; height:70%; position: absolute"></div>
+            <div style="float:right;width:40%;">
+                <form name="form" action="" method="POST">
+                    Titre: <input  type="text" name="titre" required><br><br>
+                    Description:<br> <textarea name="description" rows="5" required></textarea><br><br>
+                    Position de départ: <input id="positionDepart" name="positionDepart" type="text" required ><br><br>
+                    Position d'arrivée: <input id="positionArrivee" name="positionArrivee" type="text" required><br><br>
+                    Nombre de places: <input type="number" name="nombrePlaces" required><br><br>
+                    Prix: <input type="number" name="prix" required><br><br>
+                    Date de départ: <input type="date" name="dateDepart" required><br><br>
+                    Heure de départ: <input type="time" name="heureDepart" required ><br><br>
+                    Fumeur: Oui <input type="radio" value="1" name="fumeur" required >
+                    Non <input type="radio" value="0" name="fumeur" required><br><br>
+                    Réservée aux femmes: Oui <input type="radio" value="1" name="reserveeFemmes" required>
+                    Non <input type="radio" value="0" name="reserveeFemmes" required><br><br>
+                    <input type="submit" value="Ajouter" onclick="longlat();">
+                    <input type="reset" value="reset" onclick="goma();">
+                    <input hidden id="LatvilleDep" name="LatvilleDep" type="text"><br>
+                    <input hidden id="LatvilleArr " name="LatvilleArr" type="text"><br>
+                    <input hidden id="LongvilleDep" name="LongvilleDep" type="text"><br>
+                    <input hidden id="LongvilleArr" name="LongvilleArr" type="text"><br>
+                    <input hidden id="datestring" name="datestring" type="text"><br>
+                    <input hidden id="timestring" name="timestring" type="text"><br>
+                </form>
+            </div>
+            <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+            </script> 
+            <script type="text/javascript">
+                _uacct = "UA-162157-1";
+                urchinTracker();
+                </script> 
+                <div class="clear"></div>
+
+            </div>
+            <div class="right-wrapper">
+                <div class="ad-skyscraper">
+                    <img src="{{ asset("bundles/frontmnrs/images/allthefestivalswithkarzoo-160x600.jpg") }}">
+                </div>
+            </div>
+            <div class="clear"></div>
+
+            <div id="main-nav-outer">
+                <div id="navigation">
+                    <ul id="main-nav" class="vanilla">
+                        <li class="nav-item"><a class="nav-link" title="Accueil" href="{{ path("covoiturage_accueil") }}">Accueil</a></li>
+                        <li class="nav-item"><a class="nav-link" title="Les trajets" href="#">Les trajets</a></li>
+                        <li class="nav-item"><a class="nav-link" title="La charte" href="{{ path("covoiturage_laCharte") }}">La charte</a></li>
+                        <li class="nav-item"><a class="nav-link" title="FAQ" href="{{ path("covoiturage_faq") }}">FAQ</a></li>
+                        <li class="nav-item"><a class="nav-link" title="Réclamations" href="{{ path("covoiturage_reclamation") }}">Réclamation</a></li>{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}<li class="nav-item"><a class="nav-link" title="Déconnecter" href="{{ path('fos_user_security_logout') }}">Déconnecter</a></li>{% else %}<li class="nav-item"><a class="nav-link" title="Déconnecter" href="{{ path('fos_user_security_login') }}">S'authentifier</a></li>{% endif %}
+                    </ul>
+                </div>
+            </div>          
+            <a href="#contenu" title="Revenir au contenu">
+                <ins class="icon blue-car js-car" id="car-1" style="top: 949px;"></ins>
+                <ins class="icon green-car js-car" id="car-2" style="top: 949px;"></ins>
+                <ins class="icon pink-car js-car" id="car-3" style="top: 947px;"></ins>
+            </a>
+        </div>
+{% endblock %}

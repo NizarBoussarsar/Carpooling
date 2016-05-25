@@ -1,0 +1,22 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+ <h1>Reservations creation</h1>
+<form action="" method="post" {{form_enctype(form)}}>
+
+   {{form_widget(form)}}
+  
+
+</form>
+   
+
+   
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('reservations') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

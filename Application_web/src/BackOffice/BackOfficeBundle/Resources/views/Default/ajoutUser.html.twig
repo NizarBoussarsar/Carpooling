@@ -1,0 +1,97 @@
+{% extends "BackOfficeBackOfficeBundle::layout.html.twig"%}
+
+{% block content %}
+
+
+
+<center><h2> Ajouter un Covoitureur</h2></center>
+<br>
+
+
+<form  action="" method="post" {{form_enctype(Form)}}  visible="true" >
+    <table>
+{{ form_start(Form) }}
+
+
+    {{ form_errors(Form) }}
+            <div>
+                <tr>
+                    <td> {{ form_label(Form.email) }}</td> 
+                    <td>{{ form_errors(Form.email) }}</td>
+                    <td> {{ form_widget(Form.email) }}</td>
+                </tr>
+            </div>
+            <div>
+                <tr>
+
+                    <td>  {{ form_label(Form.username) }}</td>
+                    <td> {{ form_errors(Form.username) }}</td>
+                    <td> {{ form_widget(Form.username) }}</td>
+                </tr>
+            </div>
+            <div>
+                <tr>
+                    <td>   {{ form_label(Form.nom) }}</td>
+                    <td>    {{ form_errors(Form.nom) }}</td>
+                    <td>   {{ form_widget(Form.nom) }}</td>
+                </tr>
+            </div>
+            <div>
+                <tr>
+                    <td>   {{ form_label(Form.prenom) }}</td>
+                    <td>  {{ form_errors(Form.prenom) }}</td>
+                    <td>  {{ form_widget(Form.prenom) }}</td>
+                </tr>
+            </div>
+            <div>
+                <tr>
+                    <td>    {{ form_label(Form.password) }}</td>
+                    <td>    {{ form_errors(Form.password) }}</td>
+                    <td>   {{ form_widget(Form.password) }}</td>
+                </tr>
+            </div>
+
+
+            <div>
+                <tr>
+                    <td>    {{ form_label(Form.telephone) }}</td>
+                    <td>    {{ form_errors(Form.telephone) }}</td>
+                    <td>   {{ form_widget(Form.telephone) }}</td>
+                </tr>
+            </div>
+
+            <div>
+                <tr>
+                    <td>    {{ form_label(Form.sexe) }}</td>
+                    <td>   {{ form_errors(Form.sexe) }}</td>
+                    <td>  {{ form_widget(Form.sexe) }}</td>
+                </tr>
+            </div>
+
+
+            <div>
+                <tr>
+                    <td>   {{ form_label(Form.date_naissance) }}</td>
+                    <td>   {{ form_errors(Form.date_naissance) }}</td>
+                    <td>  {{ form_widget(Form.date_naissance) }}</td>
+                </tr>
+            </div>
+
+            <tr>
+                <td> {{ form_label(Form.etat) }}</td>
+                <td> {{ form_errors(Form.etat) }}</td>
+                <td> {{ form_widget(Form.etat) }}</td>
+            </tr>
+            </div>
+
+        </table>
+
+        <input type="submit"class="btn-primary"   />
+
+
+{{ form_end(Form) }}
+
+
+    </form>
+
+{% endblock %}{# empty Twig template #}

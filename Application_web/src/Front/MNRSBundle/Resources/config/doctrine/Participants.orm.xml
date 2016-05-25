@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Front\MNRSBundle\Entity\Participants" table="participants">
+    <indexes>
+      <index name="fk_id_covoiturage_participants" columns="id_covoiturage"/>
+      <index name="fk_id_participant_participants" columns="id_participant"/>
+    </indexes>
+    <id name="id" type="integer" column="id"/>
+    <id name="idCovoiturage" association-key="true"/>
+    <id name="idParticipant" association-key="true"/>
+    <field name="dateParticipation" type="datetime" column="date_participation" nullable="true"/>
+    <one-to-one field="idParticipant" target-entity="RayzerCoder\UserBundle\Entity\User">
+      <join-columns>
+        <join-column name="id_participant" referenced-column-name="id"/>
+      </join-columns>
+    </one-to-one>
+    <one-to-one field="idCovoiturage" target-entity="Covoiturages">
+      <join-columns>
+        <join-column name="id_covoiturage" referenced-column-name="id"/>
+      </join-columns>
+    </one-to-one>
+  </entity>
+</doctrine-mapping>

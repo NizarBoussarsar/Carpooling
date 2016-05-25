@@ -1,0 +1,81 @@
+{% extends "FrontMNRSBundle::layout.html.twig" %}
+{% block title %}
+    Tous covoiturages : TacTacCovoiturage
+{% endblock %}
+{% block content %}
+    <div class="shadow main container round" id="contenu">
+        <div class="content-wrapper">
+            <div class="sixty laurel">
+                <div class="dist">
+                    <div class="clear"></div>
+                    <table class="zebra js-clickdelegate">
+                        <colgroup>
+                            <col>
+                            <col>
+                            <col width="100">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th class="gd-2">Depart</th>
+                                <th class="gd-2">Destination</th>
+                                <th class="gd-2">Détails</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                {% for item in covoiturages %}
+                                    <td>{{item.getIdVilleDepart.getGouvernorat}}, {{item.getIdVilleDepart.getDelegation}}, {{item.getIdVilleDepart.getLocalite}}</td>
+                                    <td>{{item.getIdVilleArrivee.getGouvernorat}}, {{item.getIdVilleArrivee.getDelegation}}, {{item.getIdVilleArrivee.getLocalite}}</td>
+                                    <td class="txt-ctr"><a href="#" title="Voir plus" rel="bookmark"><ins class="icon plus-small"></ins><span class="hidden">Voir plus</span></a></td>
+                                </tr>
+                            </tbody>
+                        {% endfor %}
+                    </table>
+                    <div class="clear"></div>
+                </div>
+
+                <div class="clear"></div>
+            </div>
+            <div class="forty hardy">
+                <div class="dist">
+                    <a href="#" class="no-hover"> 
+                        <div class="shut-in gd-2 rel round no-hover">
+                            <h2 class="cl-fff uc">Inscription gratuite</h2>
+                            <p style="padding-left: 55px;" class="cl-333">
+                                Inscrivez-vous pour pouvoir entrer en contact avec la communauté de covoitureurs et déposer votre trajet !      </p>
+                            <ins class="deco flower"></ins>
+                            <ins class="eyecatcher small" title="100% gratuit"></ins>
+                        </div>
+                    </a>
+                </div>
+                <div class="dist">
+                    <div class="reason-list"><h2 class="uc cl-2 h1 reason-heading heading">Pourquoi covoiturer ?</h2><ol class="cl-2">  <li>  <h3>Économies</h3>  <p>Je partage les frais d’essence, de parking, de péages…</p>  <ins class="icon reason-economic"></ins>  </li>  <li>  <h3>Écologie</h3>  <p>Je réduis la pollution et lutte contre le réchauffement climatique en participant à la diminution des voitures en circulation.</p>  <ins class="icon reason-ecologic"></ins>  </li>  <li>  <h3>Rapidité</h3>  <p>Moins de véhicules sur les routes : finis les embouteillages !</p>  <ins class="icon reason-speed"></ins>  </li>  <li>  <h3>Convivialité</h3>  <p>Je rencontre de nouvelles personnes et la route est moins monotone.</p>  <ins class="icon reason-conviviality"></ins>  </li>  <li>  <h3>Souplesse</h3>  <p>Je covoiture quand je veux, je n’ai pas d’engagement à long terme…</p>  <ins class="icon reason-flexibility"></ins>  </li>  <li>  <h3>Sécurité</h3>  <p>Moins de véhicules, moins de fatigue, moins de stress : moins d’accidents.</p>  <ins class="icon reason-security"></ins>  </li></ol></div>
+                </div>
+                <!--<iframe src="http://www.facebook.com/plugins/likebox.php?id=34044030171&amp;width=292&amp;border_color=white&amp;connections=5&amp;stream=0&amp;header=0" scrolling="no" frameborder="0" class="bd bd-ccc no-check" style="overflow:hidden; width:292px; height:158px;" allowtransparency="true"></iframe>-->
+            </div>
+        </div>
+        <div class="right-wrapper">
+            <div class="ad-skyscraper">
+                <img alt="Tous les festivals avec Karzoo" src="{{ asset("bundles/frontmnrs/images/allthefestivalswithkarzoo-160x600.jpg") }}">
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div id="main-nav-outer">
+            <div id="navigation">
+                <ul id="main-nav" class="vanilla">
+                    <li class="nav-item"><a class="nav-link" rel="home" title="Accueil" href="{{ path("covoiturage_accueil") }}">Accueil</a></li>{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}<li class="nav-item"><a class="nav-link" title="Mon Profile" href="{{ path('fos_user_profile_show') }}">Mon Profile</a></li>{% endif %} 
+                    <li class="nav-item"><a class="nav-link" rel="contents" title="Les trajets" href="#">Les trajets</a></li>
+                    <li class="nav-item"><a class="nav-link" title="La charte" href="{{ path("covoiturage_laCharte") }}">La charte</a></li>
+                    <li class="nav-item"><a class="nav-link" title="FAQ" href="{{ path("covoiturage_faq") }}">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" title="Réclamations" href="{{ path("covoiturage_reclamation") }}">Réclamation</a></li>{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}<li class="nav-item"><a class="nav-link" title="Déconnecter" href="{{ path('fos_user_security_logout') }}">Déconnecter</a></li>{% else %}<li class="nav-item"><a class="nav-link" title="Déconnecter" href="{{ path('fos_user_security_login') }}">S'authentifier</a></li>{% endif %}
+                </ul>
+            </div>
+        </div>
+
+        <a href="#contenu" title="Revenir au contenu">
+            <ins class="icon blue-car js-car" id="car-1" style="top: 31px;"></ins>
+            <ins class="icon green-car js-car" id="car-2" style="top: 41px;"></ins>
+            <ins class="icon pink-car js-car" id="car-3" style="top: 27px;"></ins>
+        </a>          
+    </div>
+{% endblock %}

@@ -1,0 +1,209 @@
+{% extends "FrontMNRSBundle::layout.html.twig" %}
+{% block title %}
+    La charte : TacTacCovoiturage
+{% endblock %}
+{% block content %}
+    <div class="shadow main container round" id="contenu">
+        <div class="content-wrapper">
+
+            <div class="bg-eee round padd-dbl bd-ccc bd">
+                <div class="charter">
+                    <h1>La Charte TacTacCovoiturage</h1>
+
+                    <div class="gd-eee round bd-ccc bd box dist">
+                        <blockquote>
+                            <span class="quote-lft cl-2">“</span>
+                            <TacTacCovoiturage:resume>
+                                <p>Tout utilisateur du site TacTacCovoiturage doit respecter certaines règles de déontologie et de sécurité. Cette charte définit le comportement responsable que doit adopter l’utilisateur, impliquant le respect de règles de bonne conduite, de sécurité vis-à-vis des autres utilisateurs et vis-à-vis du code de la route.</p>
+                                <p>Cette charte s’applique à l’ensemble des utilisateurs de TacTacCovoiturage, qu’ils soient conducteurs ou passagers. Le succès de TacTacCovoiturage reposant sur la bonne volonté de chacun et le respect de cette charte, nous vous demandons donc de bien en prendre connaissance.</p>
+                            </TacTacCovoiturage:resume>
+                            <span class="quote-rgt cl-2">„</span>
+                        </blockquote>
+                    </div>
+
+                    <TacTacCovoiturage:charter>
+                        <h2>Responsabilités</h2>
+                        <ol>
+                            <li>Les utilisateurs de TacTacCovoiturage agissent sous leur seule et entière
+                                responsabilité. En souscrivant à ce service,
+                                chaque utilisateur certifie être âgé d’au-moins 18 ans révolus,
+                                <strong>l’inscription à TacTacCovoiturage étant strictement
+                                    interdite aux mineurs.</strong></li>
+                            <li>TacTacCovoiturage ne pourrait, en aucun cas, être tenu pour responsable de tout incident
+                                ou dommage que pourrait subir un covoitureur dans l’utilisation du site.</li>
+                            <li>TacTacCovoiturage ne saurait être tenu responsable des éventuels retard ou absence d’un
+                                passager ou d’un conducteur dans le cadre d’un trajet réalisé par
+                                l’utilisation des services du site.</li>
+                            <li>L’action même de covoiturage n’est pas organisée par TacTacCovoiturage, elle résulte
+                                exclusivement d’une organisation entre le conducteur et les passagers.</li>
+                        </ol>
+                        <p>Si la responsabilité de TacTacCovoiturage devait être engagée, celui-ci se réserve le
+                            droit de présenter le non-respect de la présente charte par les dits utilisateurs.
+                            Les éventuels frais d’avocat et les éventuels indemnisations demandés à TacTacCovoiturage
+                            seraient alors couverts par le non respect de cette charte.</p>
+
+                        <hr>
+
+                        <h2>Informations</h2>
+                        <ol>
+                            <li>Les utilisateurs du site TacTacCovoiturage s’engagent quant à <strong>l’exactitude et
+                                    l’exhaustivité</strong> de toutes les informations fournies, parmi lesquelles
+                                celles permettant la mise en relation des conducteurs et passagers. La société
+                                h2a et toutes les organisations associées à TacTacCovoiturage ne sauraient en aucun cas
+                                être tenues pour responsables des informations fournies par les utilisateurs.</li>
+                            <li>Les covoitureurs s’engagent également à modifier leurs informations sur le
+                                site de TacTacCovoiturage pour tout changement pouvant concerner directement ou indirectement
+                                le bon fonctionnement des relations de covoiturage.</li>
+                            <li>Enfin tout covoitureur se doit d’informer le(s) passager(s) ou le(s)
+                                conducteur(s) d’<strong>un éventuel changement d’emploi du temps</strong> pouvant
+                                avoir une incidence directe sur le(s) trajet(s) réalisé(s).</li>
+                        </ol>
+
+                        <hr>
+
+                        <h2>Engagements</h2>
+                        <ul class="charter-list vanilla">
+                            <li class="charter-item gd-eee bd-ccc bd padd">
+                                <img class="charter-img" src="{{ asset("bundles/covoituragefirst/images/green-car.png") }}" alt="Utilisation">
+                                <h3>Utilisation</h3>
+                                <p>Les utilisateurs s’engagent à n’utiliser TacTacCovoiturage que conformément à la finalité
+                                    du service, à savoir <strong>la mise en relation de personnes souhaitant
+                                        effectuer un trajet en commun</strong>. Les utilisateurs s’engagent notamment
+                                    à ne pas utiliser le site de façon illégale, à des fins de harcèlement, de
+                                    menace ou de diffamation, de façon attentatoire à la vie privée de tiers, de
+                                    façon abusive, dommageable, vulgaire, obscène, ou d’une manière plus générale
+                                    à des fins reprochables ou qui pourraient nuire de manière quelconque aux
+                                    droits de tiers.</p>
+                            </li>
+                            <li class="charter-item gd-eee bd-ccc bd padd">
+                                <img class="charter-img" src="{{ asset("bundles/covoituragefirst/images/stop.png") }}" alt="Code de la route et sécurité">
+                                <h3>Code de la route et sécurité</h3>
+                                <p>Le conducteur s’engage à respecter le code de la route de chaque pays
+                                    où il fera du covoiturage.</p>
+                                <p><strong>Le conducteur ne prend pas de risque au volant et n’absorbe aucun
+                                        produit dangereux</strong> pouvant altérer ses capacités à conduire avec
+                                    vigilance et en toute sécurité.</p>
+                                <p><strong>Le propriétaire du véhicule s’engage à être à jour</strong>
+                                    concernant les dispositions sécuritaires relatives au contrôle technique
+                                    dans le pays d’immatriculation du véhicule.</p>
+                            </li>
+                            <li class="charter-item gd-eee bd-ccc bd padd">
+                                <img class="charter-img" src="{{ asset("bundles/covoituragefirst/images/magnifier.png") }}" alt="Transparence">
+                                <h3>Transparence</h3>
+                                <p><strong>Le conducteur doit être en mesure de présenter immédiatement
+                                        ses papiers</strong> à un utilisateur si celui-ci les lui demande (papiers de
+                                    la voiture, assurance et permis de conduire). De même, les passagers doivent
+                                    être en mesure de présenter immédiatement un document justifiant leur identité
+                                    au conducteur si celui-ci les lui demande. Les 2 parties s’engagent à ne transporter
+                                    aucune substance illicite, dangereuse ou interdite pendant le voyage commun.</p>
+                            </li>
+                            <li class="charter-item gd-eee bd-ccc bd padd">
+                                <img class="charter-img" src="{{ asset("bundles/covoituragefirst/images/green-thumb.png") }}" alt="Assurance">
+                                <h3>Assurance</h3>
+                                <p><strong>Il n’y a pas de problème d’assurance pour pratiquer le covoiturage</strong>,
+                                    tout propriétaire de voiture possède effectivement une assurance obligatoire qui
+                                    couvre les tiers (tout passager se trouvant dans son véhicule). Cependant si le
+                                    conducteur demande une rétribution aux passagers, celui doit faire attention à
+                                    ce que <strong>la rétribution ne dépasse pas les frais réels d’utilisation du
+                                        véhicule</strong> sur le trajet donné (cf. <a href="#frais">Les frais liés au covoiturage</a>).</p>
+                                <p>Dans le cas où le conducteur souhaite laisser  le volant à l’un de ses passagers,
+                                    sur un long trajet par exemple, il lui faudra vérifier que son contrat ne comporte pas
+                                    une clause de conduite exclusive. En effet certaines garanties sont accordées dans la
+                                    mesure où le véhicule est conduit uniquement par le conducteur nommément désigné dans
+                                    le contrat (ou le plus souvent par son conjoint). Dans ce cas si le conducteur occasionnel
+                                    provoque un accident, c’est le souscripteur de l’assurance qui sera pénalisé d’un malus.</p>
+                                <p>Dans tout les cas, TacTacCovoiturage conseille vivement aux propriétaires de véhicules d’informer
+                                    leur assurance sur leur activité de covoiturage.</p>
+                            </li>
+                            <li class="charter-item gd-eee bd-ccc bd padd">
+                                <img class="charter-img" src="{{ asset("bundles/covoituragefirst/images/sponge.png") }}" alt="Confort">
+                                <h3>Confort</h3>
+                                <p>Le propriétaire du véhicule s’engage à <strong>avoir l’intérieur de son véhicule
+                                        raisonnablement propre</strong>, afin de ne pas gêner les autres covoitureurs pendant
+                                    leur trajet. De même chaque participant est tenu d’être propre sur lui au départ du
+                                    voyage.</p>
+                            </li>
+                            <li class="charter-item gd-eee bd-ccc bd padd">
+                                <img class="charter-img" src="{{ asset("bundles/covoituragefirst/images/hands-shake.png") }}" alt="Respect">
+                                <h3>Respect</h3>
+                                <p>Les covoitureurs s’engagent à <strong>respecter les préférences de chacun</strong>
+                                    et à se mettre d’accord le cas échéant, sur les dispositions prises lors de leur prise
+                                    de contact sur le site TacTacCovoiturage. Ils s’engagent également à rester polis entre eux et
+                                    à respecter le véhicule ou tout autre matériel mis à leur disposition.</p>
+                            </li>
+                            <li class="charter-item gd-eee bd-ccc bd padd">
+                                <img class="charter-img" src="{{ asset("bundles/covoituragefirst/images/red-clock.png") }}" alt="Ponctualité">
+                                <h3>Ponctualité</h3>
+                                <p>Pour le bon fonctionnement du service et une utilisation pratique de TacTacCovoiturage,
+                                    les covoitureurs s’engagent à <strong>respecter les horaires fixés</strong> et <strong> à
+                                        signaler aux autres membres tout retard ou modification de trajet</strong>.</p>
+                            </li>
+                        </ul>
+
+                        <hr>
+
+                        <h2 id="frais">Les frais liés au covoiturage</h2>
+                        <ol>
+                            <li>Le paiement de frais de transport entre les covoitureurs doit être convenu
+                                et arrêté avant le départ</li>
+                            <li>TacTacCovoiturage fournit des <a href="#"><strong>aides
+                                        au calcul</strong></a> de ces frais sur le site. Ces calculs de frais ne représentent
+                                aucunement une obligation pour les covoitureurs qui sont libres de fixer leurs frais.
+                                TacTacCovoiturage conseille cependant de garder des montants n’excédant pas les frais réellement
+                                subis. Les calculs de frais de TacTacCovoiturage ne pourront en aucun cas servir de base à une
+                                quelconque activité commerciale liée au covoiturage.</li>
+                            <li>Toute rétribution supérieure aux frais réels d’utilisation devra être signalée
+                                à la compagnie d’assurance du propriétaire du véhicule, ceci afin d’éviter toute
+                                difficulté ultérieure, notamment lors d’un accident de la route.</li>
+                        </ol>
+
+                        <hr>
+
+                        <h2>Acceptation de la Charte TacTacCovoiturage</h2>
+
+                        <ol>
+                            <li>En cochant « j’accepte la charte », l’utilisateur accepte tous les termes définis
+                                par la présente charte.</li>
+                            <li>TacTacCovoiturage se réserve le droit de modifier cette charte, et informera alors, le cas
+                                échéant, tout les utilisateurs inscrits sur le site de TacTacCovoiturage.</li>
+                            <li>En cas de non respect de cette charte, TacTacCovoiturage se réserve le droit de fermer le
+                                compte d’un utilisateur et de lui interdire tout accès ultérieur.</li>
+                            <li>Les utilisateurs s’engagent à signaler à TacTacCovoiturage toute violation de cette charte
+                                de la part d’un autre utilisateur avec lequel ils auraient été directement en
+                                contact, et ce par courriel.</li>
+                        </ol>
+
+                        <p><strong>La société porteuse du projet, H2A, se dégage de toute responsabilité pour
+                                tout incident pouvant survenir au cours d’un trajet (accident, vol, perte d’objets,
+                                retards, désistements…).</strong></p>
+
+                    </TacTacCovoiturage:charter>
+                </div>
+                <div class="clear"></div>
+            </div>            
+            <div class="clear"></div>
+        </div>
+        <div class="right-wrapper">
+            <div class="ad-skyscraper">
+                <img src="{{ asset("bundles/frontmnrs/images/allthefestivalswithkarzoo-160x600.jpg") }}">
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div id="main-nav-outer">
+            <div id="navigation">
+                <ul id="main-nav" class="vanilla">
+                    <li class="nav-item"><a class="nav-link" rel="home" title="Accueil" href="{{ path("covoiturage_accueil") }}">Accueil</a></li>{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}<li class="nav-item"><a class="nav-link" title="Mon Profile" href="{{ path('fos_user_profile_show') }}">Mon Profile</a></li>{% endif %} 
+                    <li class="nav-item"><a class="nav-link" rel="contents" title="Les trajets" href="#">Les trajets</a></li>
+                    <li class="nav-item"><a class="nav-link" title="La charte" href="{{ path("covoiturage_laCharte") }}">La charte</a></li>
+                    <li class="nav-item"><a class="nav-link" title="FAQ" href="{{ path("covoiturage_faq") }}">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" title="Réclamations" href="{{ path("covoiturage_reclamation") }}">Réclamation</a></li>{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}<li class="nav-item"><a class="nav-link" title="Déconnecter" href="{{ path('fos_user_security_logout') }}">Déconnecter</a></li>{% else %}<li class="nav-item"><a class="nav-link" title="Déconnecter" href="{{ path('fos_user_security_login') }}">S'authentifier</a></li>{% endif %}
+                </ul>
+            </div>
+        </div>
+        <a href="#contenu" title="Revenir au contenu">
+            <ins class="icon blue-car js-car" id="car-1" style="top: 31px;"></ins>
+            <ins class="icon green-car js-car" id="car-2" style="top: 41px;"></ins>
+            <ins class="icon pink-car js-car" id="car-3" style="top: 27px;"></ins>
+        </a>          
+    </div>
+{% endblock %}

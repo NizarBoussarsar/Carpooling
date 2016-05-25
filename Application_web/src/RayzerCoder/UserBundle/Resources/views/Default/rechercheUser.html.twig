@@ -1,0 +1,140 @@
+
+
+{% extends "RayzerCoderUserBundle::layout.html.twig" %}
+
+                {% block content %}
+
+<div class="shadow main container round" id="contenu">
+
+
+
+    <div class="content-wrapper">
+
+        <div class="thirty laurel">
+      
+
+        </div>
+        <div class="seventy hardy">
+
+
+
+            <h3></h3>
+
+            <div class="clear"></div>
+
+
+
+
+            <div class="well research_form">
+                <h3>Recherche un utilisateur</h3>
+
+                <form method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+                    <input type="submit" />
+                </form>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="right-wrapper">
+
+
+        <!-- No add, probably a Google one -->
+      
+    </div>
+    <div class="clear"></div>
+
+    <div id="main-nav-outer">
+         <div id="navigation">
+               <ul id="main-nav" class="vanilla">
+                    <li class="nav-item"><a class="nav-link" rel="home" title="Accueil" href="{{ path("covoiturage_accueil") }}">Accueil</a></li>{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}<li class="nav-item"><a class="nav-link" title="Mon Profile" href="{{ path('fos_user_profile_show') }}">Mon Profile</a></li>{% endif %} 
+                     <li class="nav-item"><a class="nav-link" rel="recherche" title="Recherche" href="{{ path("rayzer_coder_user_simple_search") }}">Recherche Covoitureur</a></li>
+                    <li class="nav-item"><a class="nav-link" rel="recherche" title="Recherche" href="{{ path("rayzer_coder_user_advanced_search") }}">Recherche Avancée</a></li>
+                  
+                     <li class="nav-item"><a class="nav-link" rel="contents" title="Les trajets" href="#">Les trajets</a></li>
+                    <li class="nav-item"><a class="nav-link" title="La charte" href="{{ path("covoiturage_laCharte") }}">La charte</a></li>
+                    <li class="nav-item"><a class="nav-link" title="FAQ" href="{{ path("covoiturage_faq") }}">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" title="Réclamations" href="{{ path("covoiturage_reclamation") }}">Réclamation</a></li>{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}<li class="nav-item"><a class="nav-link" title="Déconnecter" href="{{ path('fos_user_security_logout') }}">Déconnecter</a></li>{% else %}<li class="nav-item"><a class="nav-link" title="Déconnecter" href="{{ path('fos_user_security_login') }}">S'authentifier</a></li>{% endif %}
+                </ul>
+            </div>
+    </div>          <a href="#contenu" title="Revenir au contenu">
+        <ins class="icon blue-car js-car" id="car-1" style="top: 157px;"></ins>
+        <ins class="icon green-car js-car" id="car-2" style="top: 52px;"></ins>
+        <ins class="icon pink-car js-car" id="car-3" style="top: 64px;"></ins>
+    </a>
+</div>
+                {% endblock %}  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

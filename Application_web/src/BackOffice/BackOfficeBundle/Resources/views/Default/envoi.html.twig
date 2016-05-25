@@ -1,0 +1,33 @@
+{% extends "BackOfficeBackOfficeBundle::layout.html.twig"%}
+
+{% block content %}
+<script type="text/javascript">
+    function validate() {
+    if (document.f1.rad[0].checked)
+    {
+    document.f1.cont.value = "Bonjour,\n\nS'il vous plaît ne pas répondre à ce message. Les réponses à ce message sont acheminées vers une boîte aux lettres sans surveillance.\n\nVotre réclamation a été traitée avec succés.\n\nSi vous avez besoins de plus d'infomations, veuillez nous contacter sur http://www.tactac-covoiturage.com/contact.";
+    }
+    else {
+    document.f1.cont.value = "Bonjour,\n\nS'il vous plaît ne pas répondre à ce message. Les réponses à ce message sont acheminées vers une boîte aux lettres sans surveillance.\n\nVotre réclamation n'a pas encore été traitée.\n\nSi vous avez besoins de plus d'infomations, veuillez nous contacter sur http://www.tactac-covoiturage.com/contact.";
+    }
+    }
+</script>
+<form name="f1" action="{{path("back_office_reclamation")}}" method="POST" onClick="validate();">
+    Objet <input name="Subject" id="ras"><br>
+    Contenu <br> 
+    <textarea name="cont" id="cont" cols="50" rows="10"></textarea><br>
+    <input type = "radio"
+               name = "rad"
+               id = "oui"
+               value = "oui"
+               />
+    <label for = "oui">Traitée</label><br>
+    <input type = "radio"
+           name = "rad"
+           id = "non"
+           value = "non" />
+    <label for = "non">Non traitée</label><br>
+    <br> <input type="submit" value="Envoyer">   
+</form>
+
+{% endblock %}{# empty Twig template #}

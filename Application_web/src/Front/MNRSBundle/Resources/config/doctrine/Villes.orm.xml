@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Front\MNRSBundle\Entity\Villes" table="villes">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="codePostal" type="integer" column="code_postal" nullable="true"/>
+    <field name="localite" type="string" column="localite" length="100" nullable="true"/>
+    <field name="delegation" type="string" column="delegation" length="45" nullable="true"/>
+    <field name="gouvernorat" type="string" column="gouvernorat" length="100" nullable="true"/>
+    <field name="latitude" type="float" column="latitude" precision="10" scale="6" nullable="true"/>
+    <field name="longitude" type="float" column="longitude" precision="10" scale="6" nullable="true"/>
+  </entity>
+</doctrine-mapping>

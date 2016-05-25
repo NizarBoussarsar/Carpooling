@@ -1,0 +1,30 @@
+reservations:
+    pattern:  /
+    defaults: { _controller: "GestionCovoiturageBundle:Reservations:index" }
+
+reservations_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "GestionCovoiturageBundle:Reservations:show" }
+
+reservations_new:
+    pattern:  /new
+    defaults: { _controller: "GestionCovoiturageBundle:Reservations:new" }
+
+reservations_create:
+    pattern:  /create
+    defaults: { _controller: "GestionCovoiturageBundle:Reservations:create" }
+    requirements: { _method: post }
+
+reservations_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "GestionCovoiturageBundle:Reservations:edit" }
+
+reservations_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "GestionCovoiturageBundle:Reservations:update" }
+    requirements: { _method: post|put }
+
+reservations_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "GestionCovoiturageBundle:Reservations:delete" }
+    requirements: { _method: post|delete }

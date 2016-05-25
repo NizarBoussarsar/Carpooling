@@ -1,0 +1,158 @@
+{% extends 'FrontMNRSBundle::layout.html.twig' %}
+{% block title %}
+Résultat Recherche : TacTacCovoiturage
+{% endblock %}
+{% block style %}
+<style type="text/css">
+        DIV.form, #openModal {text-align: right}
+        textarea,input[type=text] {
+            width: 18.25em !important;
+        }
+        select{
+            width: 18.75em !important;
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="shadow main container round" id="contenu">
+        <div class="content-wrapper">
+            <div class="seventy hardy">
+                <div class="shut-in">
+                    <h1 class="dist regular-font uc">Résultat De Votre Recherche</h1>
+                    <hr>
+                    <div class="clear"></div>
+                    {% if covoiturages|length != 0 %}
+                    <table class="zebra vanilla bd-dbl js-clickdelegate">
+                        <thead>
+                            <tr>
+                                <th class="gd-2 no-wrap">Départ</th>
+                                <th class="gd-2 no-wrap">Arrivée</th>
+                                <th class="gd-2 no-wrap">Date Départ</th>
+                                <th class="gd-2 no-wrap">Détail</th>
+                                <th class="gd-2 no-wrap"> Réserver</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                {% set a=0%}
+                               {% for item in covoiturages %}
+                                <tr>
+                                    <td class="cl-333">
+                                           {{item.positionDepart}}
+                                        </td>
+                                        <td class="cl-333">
+                                         {{item.positionArrivee}}
+                                            </td>
+                                            <td class="cl-333">
+                                        {% if item.dateDepart %}{{ item.dateDepart|date('Y-m-d')}}{% endif %}
+                                                </td>
+                                                <td class="txt-ctr no-wrap">
+                                                    <a href="#openModal{{a}}" style="margin-left: 20px" >  <ins class="icon plus-small"></ins></a
+                                                    &nbsp;
+                                                </td>
+                                                <td class="txt-ctr no-wrap">
+                                                    <a href="{{ path('reservation_new', { 'id': item.id , 'idd': app.user.id }) }}"> Réserver </a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <div>
+                                            <div id="openModal{{a}}" class="modalDialog">
+                                                <div>
+                                                    <a href="#close" title="Close" class="close">X</a>
+                                                    <h1>Détails Covoiturage</h1>
+                                                    <hr>
+
+                                                    <div class="form">
+                                                        <div class="form-row ">
+                                                            <label class="wh" for="user_message_username">Départ&nbsp;
+                                                                <abbr class="required" title="Required field">:</abbr>
+                                                            </label>
+                                            {# Affichage des erreurs pour ce champ précis. #}
+                                            {{item.positionDepart}}
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form">
+                                        {# Génération du label. #}
+                                                            <div class="form-row ">
+                                                                <label class="wh" for="user_message_username">Arrivée&nbsp;
+                                                                    <abbr class="required" title="Required field">:</abbr>
+                                                                </label>    {{item.positionArrivee}}
+                                                                <div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form">
+                                                            <div class="form-row ">
+                                                                <label class="wh" for="user_message_username">Date départ&nbsp;
+                                                                    <abbr class="required" title="Required field">:</abbr>
+                                                                </label>        {% if item.dateDepart %}{{ item.heureDepart|date('Y-m-d')}}{% endif %}   
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form">
+                                                            <div class="form-row ">
+                                                                <label class="wh" for="user_message_username">Heure départ&nbsp;
+                                                                    <abbr class="required" title="Required field">:</abbr>
+                                                                </label> {% if item.dateDepart %}{{ item.heureDepart|date('H:i:s')}}{% endif %}   
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="form">
+                                                            <div class="form-row ">
+                                                                <label class="wh" for="user_message_username">Nombre places&nbsp;
+                                                                    <abbr class="required" title="Required field">:</abbr>
+                                                                </label> {{item.nombrePlaces}}       
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="form">
+                                                            <div class="form-row ">
+                                                                <label class="wh" for="user_message_username">Prix:&nbsp;
+                                                                    <abbr class="required" title="Required field">:</abbr>
+                                                                </label>{{item.prix}}        
+
+                                                            </div>
+                                                        </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                                {% set a=a+1%}
+                              {% endfor %}
+                                        </table>
+
+                    {% else  %}
+                                        <h1 class="dist regular-font uc">il n'y a pas de covoiturage qui vous convient </h1>
+                  {% endif %}
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                            <div class="right-wrapper">
+                                <div class="ad-skyscraper">
+                                    <img src="{{ asset("bundles/frontmnrs/images/allthefestivalswithkarzoo-160x600.jpg") }}">
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                            <div id="main-nav-outer">
+                                <div id="navigation">
+                                    <ul id="main-nav" class="vanilla">
+                                        <li class="nav-item"><a class="nav-link" title="Accueil" href="{{ path("covoiturage_accueil") }}">Accueil</a></li>
+                                        <li class="nav-item"><a class="nav-link" title="Les trajets" href="#">Les trajets</a></li>
+                                        <li class="nav-item"><a class="nav-link" title="La charte" href="{{ path("covoiturage_laCharte") }}">La charte</a></li>
+                                        <li class="nav-item"><a class="nav-link" title="FAQ" href="{{ path("covoiturage_faq") }}">FAQ</a></li>
+                                        <li class="nav-item"><a class="nav-link" title="Réclamations" href="{{ path("covoiturage_reclamation") }}">Réclamation</a></li>{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}<li class="nav-item"><a class="nav-link" title="Déconnecter" href="{{ path('fos_user_security_logout') }}">Déconnecter</a></li>{% else %}<li class="nav-item"><a class="nav-link" title="Déconnecter" href="{{ path('fos_user_security_login') }}">S'authentifier</a></li>{% endif %}
+                                    </ul>
+                                </div>
+                            </div>          
+                            <a href="#contenu" title="Revenir au contenu">
+                                <ins class="icon blue-car js-car" id="car-1" style="top: 21px;"></ins>
+                                <ins class="icon green-car js-car" id="car-2" style="top: 25px;"></ins>
+                                <ins class="icon pink-car js-car" id="car-3" style="top: 23px;"></ins>
+                            </a>
+                        </div>
+
+{% endblock %}

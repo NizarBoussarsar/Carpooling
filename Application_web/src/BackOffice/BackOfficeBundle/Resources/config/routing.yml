@@ -1,0 +1,47 @@
+back_office_home:
+    pattern:  /
+    defaults: { _controller: BackOfficeBackOfficeBundle:Default:home }
+    
+back_office_home2:
+    pattern:  /home2
+    defaults: { _controller: BackOfficeBackOfficeBundle:Default:home2 }
+
+back_office_userpage:
+    pattern:  /user
+    defaults: { _controller: BackOfficeBackOfficeBundle:Default:user }
+    
+back_office_userAddpage:
+    pattern:  /ajoutUser
+    defaults: { _controller: BackOfficeBackOfficeBundle:Default:addUser }
+    
+back_office_covpage:
+    pattern:  /listcov
+    defaults: { _controller: BackOfficeBackOfficeBundle:Default:cov }
+    
+back_office_supprimer_user :
+    pattern:  /deletecovoitureur/{id}
+    defaults: { _controller: BackOfficeBackOfficeBundle:Default:deletecov}
+    
+back_office_modifier_user :
+    pattern:  /modifierUser/{id}
+    defaults: { _controller: BackOfficeBackOfficeBundle:Default:updateUser}
+    
+    
+back_office_impossible_user :
+    pattern:  /impossible
+    defaults: { _controller: BackOfficeBackOfficeBundle:Default:impossible}
+    
+back_office_supprimer_covoiturage :
+    pattern:  /deletecovoiutage/{id}
+    defaults: { _controller: BackOfficeBackOfficeBundle:Default:deletecovoiturage}
+
+back_office_reclamation :
+    pattern:  /listeReclamation
+    defaults: { _controller: BackOfficeBackOfficeBundle:Default:listeReclamation}
+
+back_office_Consulter_reclamation :
+    pattern:  /reclamations/show/{id}
+    defaults: { _controller: BackOfficeBackOfficeBundle:Default:show}
+back_office_repondre_reclamation:
+    pattern: /reclamations/repondre/{email}
+    defaults: { _controller: BackOfficeBackOfficeBundle:Default:email }

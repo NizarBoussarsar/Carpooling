@@ -1,0 +1,43 @@
+{% extends 'CovoiturageFirstBundle::layout.html.twig' %}
+
+{% block body -%}
+    <h1>Reservations list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Datereservation</th>
+                <th>Etat</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+              {#  <td><a href="{{ path('reservations_show', { 'id': entity.id }) }}">{{ entity.dateReservation }}</a></td>#}
+                <td>{{ entity.etat }}</td>
+                <td>{{ entity.id }}</td>
+                <td>
+                <ul>
+                    <li>
+                    {#     <a href="{{ path('reservations_show', { 'id': entity.id }) }}">show</a> #}
+                    </li>
+                    <li>
+                       {#  <a href="{{ path('reservations_edit', { 'id': entity.id }) }}">edit</a>#}
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+          {#   <a href="{{ path('reservations_new') }}"> #}
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

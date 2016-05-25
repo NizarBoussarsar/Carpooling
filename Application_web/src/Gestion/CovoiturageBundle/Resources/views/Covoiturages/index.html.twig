@@ -1,0 +1,52 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Covoiturages list</h1>
+
+    <table class="records_list" border="1">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Datecreation</th>
+                <th>Datemiseajour</th>
+                <th>Datedepart</th>
+                <th>Heuredepart</th>
+                <th>Nombreplaces</th>
+                <th>Prix</th>
+                <th>Fumeur</th>
+                <th>Reserveefemmes</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('covoiturages_show', { 'id': entity.id }) }}">{{ entity.titre }}</a></td>
+                <td>{{ entity.description }}</td>
+                <td>{% if entity.dateCreation %}{{ entity.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.dateMiseajour %}{{ entity.dateMiseajour|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.dateDepart %}{{ entity.dateDepart|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.heureDepart|date('H:i:s')}}</td>
+                <td>{{ entity.nombrePlaces}}</td>
+                <td>{{ entity.prix }}</td>
+                <td>{{ entity.fumeur }}</td>
+                <td>{{ entity.reserveeFemmes }}</td>
+                <td>{{ entity.id }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('covoiturages_show', { 'id': entity.id }) }}">Annuler</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('covoiturages_edit', { 'id': entity.id }) }}">Modifiert</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% endblock %}

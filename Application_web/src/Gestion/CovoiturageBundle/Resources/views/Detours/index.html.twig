@@ -1,0 +1,31 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Detours list</h1>
+
+    <table class="records_list" border="1">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>id_covoiturage</th>
+                <th>id_ville</th>
+            
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+            
+                <td>{{ entity.id }}</td>
+                <td>{{ entity.idCovoiturage }}</td>
+                <td>{{ entity.idVille }}</td>
+                <td>
+         
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    {% endblock %}

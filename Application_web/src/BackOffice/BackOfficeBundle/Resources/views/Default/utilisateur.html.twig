@@ -1,0 +1,63 @@
+{% extends "BackOfficeBackOfficeBundle::layout.html.twig"%}
+
+{% block content %}
+
+
+
+
+<table  id="example"class="display table table-striped table-bordered table-hover dataTable no-footer" cellspacing="0" width="100%" role="grid" aria-describedby="example_info">
+    <thead>
+        <tr role="row">
+            <th class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending"  style="width: 156px;">id</th>
+            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"  style="width: 251px;">email</th>
+            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 111px;">nom utilisateur</th>
+            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"  style="width: 47px;">nom</th>
+            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"  style="width: 106px;">prenom</th>
+            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"  style="width: 93px;">sexe</th>
+            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"  style="width: 93px;">etat</th>
+
+            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"  style="width: 93px;">Modifier</th>
+            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"  style="width: 93px;">supprimer</th></tr>
+
+    </thead>
+    <tbody>
+            {% for modele in modeles %}
+            <tr role="row" class="odd">
+
+                <td>{{modele.id}}</td>
+                <td>{{modele.email}}</td>
+                <td>{{modele.username}}</td>
+                <td>{{modele.nom}}</td>
+                <td>{{modele.prenom}}</td>
+                {%if modele.sexe == "h" or modele.sexe == "H" or  modele.sexe == "m"%}
+                <td>Homme</td>
+                {% else %}
+                <td>Femme</td>
+                {% endif %}
+
+               {% if modele.etat == 0 %}
+                <td>Bloqué</td>
+               {% elseif modele.etat == 1%}
+                <td>En attente</td> 
+                {% elseif modele.etat == 2%}
+                <td>Actif</td> 
+                {% endif %}
+
+                <td> <a href="{{path("back_office_modifier_user",{'id':modele.Id})}}">modifier</a></td>
+                <td> <a href="{{path("back_office_supprimer_user",{'id':modele.Id})}}">supprimer</a></td>
+
+            </tr>
+    {%else %}
+            <tr>Aucun covoitureur</tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+
+
+
+
+
+    <!-- /.table-responsive -->
+{% endblock %}{# empty Twig template #}

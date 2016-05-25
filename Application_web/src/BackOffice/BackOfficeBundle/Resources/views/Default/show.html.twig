@@ -1,0 +1,15 @@
+{% extends "BackOfficeBackOfficeBundle::layout.html.twig"%}
+
+{% block content %}
+<div>
+email <input type="text" size="25" value="{{ entity.email }}">
+</di>
+    <br>
+    <div>
+  Message    <textarea name="message" >{{ entity.message }}.</textarea>
+            
+        
+         <a title="Consulter" href="{{ path('back_office_repondre_reclamation', { 'email': entity.email }) }}">Répondre</a>
+ </div>   
+
+{% endblock %}

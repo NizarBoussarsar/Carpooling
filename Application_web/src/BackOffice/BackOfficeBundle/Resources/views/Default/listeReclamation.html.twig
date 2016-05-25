@@ -1,0 +1,47 @@
+{% extends "BackOfficeBackOfficeBundle::layout.html.twig"%}
+
+{% block content %}
+
+
+
+    
+    <table  id="example"class="display table table-striped table-bordered table-hover dataTable no-footer" cellspacing="0" width="100%" role="grid" aria-describedby="example_info">
+        <thead>
+            <tr role="row">
+                
+                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"  style="width: 251px;">Email</th>
+                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 111px;">Nom Utilisateur</th>
+                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"  style="width: 47px;">Type</th>
+                <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"  style="width: 106px;">Message</th>
+                  <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"  style="width: 106px;">Repondre</th>
+              
+        </thead>
+        <tbody>
+            {% for modele in modeles %}
+                <tr role="row" class="odd">
+                
+                
+                <td>{{modele.email}}</td>
+                <td>{{modele.nomUtilisateur}}</td>
+                <td>{{modele.type}}</td>
+                <td>{{modele.message}}</td>
+            
+               
+                
+                <td> <a title="Consulter" href="{{ path('back_office_Consulter_reclamation', { 'id': modele.id }) }}">Consulter</a></td>
+                
+    </tr>
+    {%else %}
+        <tr>no match </tr>
+        {% endfor %}
+           
+        </tbody>
+    </table>
+
+
+
+
+
+
+    <!-- /.table-responsive -->
+{% endblock %}{# empty Twig template #}

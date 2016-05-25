@@ -1,0 +1,122 @@
+{% extends "FrontMNRSBundle::layout.html.twig" %}
+{% block title %}
+Mes villes les plus visités: TacTacCovoiturage
+{% endblock %}
+{% block style %}
+    {{parent()}}
+<script type="text/javascript" charset="utf8" language="javascript" src="{{ asset('bundles/frontmnrs/js/amcharts.js')}}"></script>
+<script type="text/javascript" charset="utf8" language="javascript" src="{{ asset('bundles/frontmnrs/js/pie.js')}}"></script>
+<script>
+    var chart;
+    var legend;
+    var chartData = [
+    {% for  entity in entities %}
+        {
+            "Gouvernorat": "{{entity.arrivee}}",
+            "Frequence": "{{entity.nombre}}"
+        },
+    {% endfor%}
+    ];
+    AmCharts.ready(function() {
+        chart = new AmCharts.AmPieChart();
+        chart.dataProvider = chartData;
+        chart.titleField = "Gouvernorat";
+        chart.valueField = "Frequence";
+        chart.outlineColor = "#FFFFFF";
+        chart.outlineAlpha = 0.8;
+        chart.outlineThickness = 2;
+        chart.balloonText = "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>";
+        chart.depth3D = 15;
+        chart.angle = 30;
+        chart.write("chartdiv");
+    });
+    </script>
+    <style scoped>
+            #chartdiv {
+                width	: 100%;
+                height	: 500px;
+            }	
+        </style>
+{% endblock %}
+{%block content %}
+        <div class="shadow main container round" id="contenu">
+            <div class="content-wrapper">
+                <div class="thirty laurel">
+                    <div class="shadow gd-8 no-padd shut-nav">
+                        <ul class="vanilla bd bd-eee">
+                            <li class="js-springy cl-eee">
+                                <h3 class="title regular-font uc bd-eee">
+                                    <a class="block in cl-333 bd-8 js-springy-trigger" title="Mes messages" href="#">Mes messages</a>      </h3>
+                                <div class="sub-nav js-springy-performer in-shadow" style="display: none;">
+                                    <ul class="vanilla">
+                                        <li class="item active first">
+                                            <a class="cl-333" title="Boîte de réception" href="{{ path('messages_show_inbox') }}">Boîte de réception ({{messages|length}})</a>    </li>
+                                        <li class="item">
+                                            <a class="cl-333" title="Messages envoyés" href="{{ path('messages_show_outbox') }}">Messages envoyés</a>    </li>
+                                        <li class="item">
+                                            <a class="cl-333" title="Envoyer un message" href="{{ path('messages_create') }}">Envoyer un message</a>    </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="js-springy cl-eee">
+                                <h3 class="title regular-font uc bd-eee">
+                                    <a class="block in cl-333 bd-8 js-springy-trigger" title="Mes notifications" href="" >Mes notifications</a>
+                                </h3>
+                                <div class="sub-nav js-springy-performer in-shadow" style="display: none;">
+                                    <ul class="vanilla">
+                                        <li class="item active first">
+                                            <a class="cl-333" title="Non lues" href="{{ path('notifications_nonlues') }}">Non lues ({{notifications|length}})</a>    
+                                        </li>
+                                        <li class="item active first">
+                                            <a class="cl-333" title="Toutes" href="{{ path('notifications_all') }}">Toutes</a>    
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="js-springy cl-eee opened">
+                                <h3 class="title regular-font uc bd-eee">
+                                    <a class="block in cl-333 bd-8 js-springy-trigger cl-eee" title="Mes statistiques" href="#">Mes statistiques</a>      </h3>
+                                <div class="sub-nav js-springy-performer in-shadow">
+                                    <ul class="vanilla">
+                                        <li class="item active first">
+                                            <a class="cl-333" title="Dépenses par mois" href="{{ path('statistiques_cout') }}">Dépenses par mois</a>    </li>
+                                        <li class="item">
+                                            <a class="cl-333" title="Ma note" href="{{ path('statistiques_eval') }}">Ma note</a>    </li>
+                                        <li class="item">
+                                            <a class="cl-333 b" title="Fréquences des villes visitées" href="{{ path('statistiques_show') }}">Fréquences des villes visitées</a>    </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="seventy hardy">
+                    <div class="shut-in">
+                        <div id="chartdiv"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-wrapper">
+                <div class="ad-skyscraper">
+                    <img src="{{ asset("bundles/frontmnrs/images/allthefestivalswithkarzoo-160x600.jpg") }}">
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div id="main-nav-outer">
+                <div id="navigation">
+                    <ul id="main-nav" class="vanilla">
+                        <li class="nav-item"><a class="nav-link" rel="home" title="Accueil" href="{{ path("covoiturage_accueil") }}">Accueil</a></li>{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}<li class="nav-item"><a class="nav-link" title="Mon Profile" href="{{ path('fos_user_profile_show') }}">Mon Profile</a></li>{% endif %} 
+                        <li class="nav-item"><a class="nav-link" rel="contents" title="Les trajets" href="#">Les trajets</a></li>
+                        <li class="nav-item"><a class="nav-link" title="La charte" href="{{ path("covoiturage_laCharte") }}">La charte</a></li>
+                        <li class="nav-item"><a class="nav-link" title="FAQ" href="{{ path("covoiturage_faq") }}">FAQ</a></li>
+                        <li class="nav-item"><a class="nav-link" title="Réclamations" href="{{ path("covoiturage_reclamation") }}">Réclamation</a></li>{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}<li class="nav-item"><a class="nav-link" title="Déconnecter" href="{{ path('fos_user_security_logout') }}">Déconnecter</a></li>{% else %}<li class="nav-item"><a class="nav-link" title="Déconnecter" href="{{ path('fos_user_security_login') }}">S'authentifier</a></li>{% endif %}
+                    </ul>
+                </div>
+            </div>          
+            <a href="#contenu" title="Revenir au contenu">
+                <ins class="icon blue-car js-car" id="car-1" style="top: 21px;"></ins>
+                <ins class="icon green-car js-car" id="car-2" style="top: 25px;"></ins>
+                <ins class="icon pink-car js-car" id="car-3" style="top: 23px;"></ins>
+            </a>
+        </div>
+{% endblock %}

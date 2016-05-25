@@ -1,0 +1,21 @@
+parameters:
+#    rayzer_coder_user.example.class: RayzerCoder\UserBundle\Example
+
+services:
+#    rayzer_coder_user.example:
+#        class: %rayzer_coder_user.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+    my_password_encoder:
+        class: 'RayzerCoder\UserBundle\Security\Encoder\MyPasswordEncoder'
+        
+    rayzer_coder_user.registration.form.type:
+        class: RayzerCoder\UserBundle\Form\Type\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: rayzer_coder_user_registration }
+            
+    rayzer_coder_user.profile.form.type:
+        class: RayzerCoder\UserBundle\Form\Type\ProfileFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: rayzer_coder_user_profile }

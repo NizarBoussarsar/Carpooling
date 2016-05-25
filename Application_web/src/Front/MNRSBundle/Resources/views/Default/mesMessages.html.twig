@@ -1,0 +1,259 @@
+{% extends "FrontMNRSBundle::layout.html.twig" %}
+{% block title %}
+Boite de réception : TacTacCovoiturage
+{% endblock %}
+{% block content %}
+    {% if messages|length == 0 %}
+<div class="shadow main container round" id="contenu">
+    <div class="content-wrapper">
+        <div class="thirty laurel">
+            <div class="shadow gd-8 no-padd shut-nav">
+                <ul class="vanilla bd bd-eee">
+                    <li class="js-springy cl-eee opened">
+                        <h3 class="title regular-font uc bd-eee">
+                            <a class="block in cl-333 bd-8 js-springy-trigger cl-eee" title="Mes messages" href="#">Mes messages</a>      </h3>
+                        <div class="sub-nav js-springy-performer in-shadow">
+                            <ul class="vanilla">
+                                <li class="item active first">
+                                    <a class="cl-333 b" title="Boîte de réception" href="{{ path('messages_show_inbox') }}">Boîte de réception ({{ messages|length }})</a>    </li>
+                                <li class="item">
+                                    <a class="cl-333" title="Messages envoyés" href="{{ path('messages_show_outbox') }}">Messages envoyés</a>    </li>
+                                <li class="item">
+                                    <a class="cl-333" title="Envoyer un message" href="{{ path('messages_create') }}">Envoyer un message</a>    </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="js-springy cl-eee">
+                        <h3 class="title regular-font uc bd-eee">
+                            <a class="block in cl-333 bd-8 js-springy-trigger" title="Mes notifications" href="" >Mes notifications</a>
+                        </h3>
+                        <div class="sub-nav js-springy-performer in-shadow" style="display: none;">
+                            <ul class="vanilla">
+                                <li class="item active first">
+                                    <a class="cl-333" title="Non lues" href="{{ path('notifications_nonlues') }}">Non lues ({{ notifications|length }})</a>    
+                                </li>
+                                <li class="item active first">
+                                    <a class="cl-333" title="Toutes" href="{{ path('notifications_all') }}">Toutes</a>    
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="js-springy cl-eee">
+                        <h3 class="title regular-font uc bd-eee">
+                            <a class="block in cl-333 bd-8 js-springy-trigger" title="Mes statistiques" href="#">Mes statistiques</a>      </h3>
+                        <div class="sub-nav js-springy-performer in-shadow" style="display: none;">
+                            <ul class="vanilla">
+                                <li class="item active first">
+                                    <a class="cl-333 b" title="Dépenses par mois" href="{{ path('statistiques_cout') }}">Dépenses par mois</a>    </li>
+                                <li class="item">
+                                    <a class="cl-333" title="Ma note" href="{{ path('statistiques_eval') }}">Ma note</a>    </li>
+                                <li class="item">
+                                    <a class="cl-333" title="Fréquences des villes visitées" href="{{ path('statistiques_show') }}">Fréquences des villes visitées</a>    </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="seventy hardy">
+            <div class="shut-in">
+                <h1 class="dist regular-font uc">Boîte de réception</h1>
+                <hr>
+                <div class="clear"></div>
+                <div class="txt-rgt dist">
+                    <a class="button dist round cl-fff gd-4 uc padd iconized large js-ajaxform-link" href="{{ path('messages_create') }}">
+                        <span class="left text-part txt-ctr">Envoyer<br>
+                            <small class="small nc">un nouveau message</small>
+                        </span>
+                        <span class="right icon-part txt-rgt">
+                            <ins class="icon plus-medium"></ins>
+                        </span>
+                        <span class="clear">&nbsp;</span>
+                    </a>
+                </div>
+                <p class="cl-555 msg padd">
+                    Aucun nouveau message reçu.      
+                    <ins class="icon warning-medium"></ins>
+                </p>
+                <br>
+                <a style="text-align: right" href="{{ path('messages_all_inbox') }}">Voir tout vos messages</a>...
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="right-wrapper">
+        <div class="ad-skyscraper">
+            <img src="{{ asset("bundles/frontmnrs/images/allthefestivalswithkarzoo-160x600.jpg") }}">
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="main-nav-outer">
+        <div id="navigation">
+            <ul id="main-nav" class="vanilla">
+                <li class="nav-item"><a class="nav-link" title="Accueil" href="{{ path("covoiturage_accueil") }}">Accueil</a></li>
+                <li class="nav-item"><a class="nav-link" title="Les trajets" href="#">Les trajets</a></li>
+                <li class="nav-item"><a class="nav-link" title="La charte" href="{{ path("covoiturage_laCharte") }}">La charte</a></li>
+                <li class="nav-item"><a class="nav-link" title="FAQ" href="{{ path("covoiturage_faq") }}">FAQ</a></li>
+                <li class="nav-item"><a class="nav-link" title="Réclamations" href="{{ path("covoiturage_reclamation") }}">Réclamation</a></li>{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}<li class="nav-item"><a class="nav-link" title="Déconnecter" href="{{ path('fos_user_security_logout') }}">Déconnecter</a></li>{% else %}<li class="nav-item"><a class="nav-link" title="Déconnecter" href="{{ path('fos_user_security_login') }}">S'authentifier</a></li>{% endif %}
+            </ul>
+        </div>
+    </div>          
+    <a href="#contenu" title="Revenir au contenu">
+        <ins class="icon blue-car js-car" id="car-1" style="top: 21px;"></ins>
+        <ins class="icon green-car js-car" id="car-2" style="top: 25px;"></ins>
+        <ins class="icon pink-car js-car" id="car-3" style="top: 23px;"></ins>
+    </a>
+</div>
+<ul class="v-list vanilla">
+    <li class="v-item"><a href="#" class="v-tab uc v-txt txt-ctr box cl-fff bg-3 bottom-round" rel="contents">Recherche</a></li>
+    <li class="v-item"><a href="#" class="v-tab uc v-txt txt-ctr box cl-fff bg-2 bottom-round" rel="contents">Mon compte</a></li>
+</ul>
+    {% else %}
+<div class="shadow main container round" id="contenu">
+    <div class="content-wrapper">
+        <div class="thirty laurel">
+            <div class="shadow gd-8 no-padd shut-nav">
+                <ul class="vanilla bd bd-eee">
+                    <li class="js-springy cl-eee opened">
+                        <h3 class="title regular-font uc bd-eee">
+                            <a class="block in cl-333 bd-8 js-springy-trigger cl-eee" title="Mes messages" href="#">Mes messages</a>      </h3>
+                        <div class="sub-nav js-springy-performer in-shadow">
+                            <ul class="vanilla">
+                                <li class="item active first">
+                                    <a class="cl-333 b" title="Boîte de réception" href="{{ path('messages_show_inbox') }}">Boîte de réception ({{ messages|length }})</a>    </li>
+                                <li class="item">
+                                    <a class="cl-333" title="Messages envoyés" href="{{ path('messages_show_outbox') }}">Messages envoyés</a>    </li>
+                                <li class="item">
+                                    <a class="cl-333" title="Envoyer un message" href="{{ path('messages_create') }}">Envoyer un message</a>    </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="js-springy cl-eee">
+                        <h3 class="title regular-font uc bd-eee">
+                            <a class="block in cl-333 bd-8 js-springy-trigger" title="Mes notifications" href="" >Mes notifications</a>
+                        </h3>
+                        <div class="sub-nav js-springy-performer in-shadow" style="display: none;">
+                            <ul class="vanilla">
+                                <li class="item active first">
+                                    <a class="cl-333" title="Non lues" href="{{ path('notifications_nonlues') }}">Non lues ({{ notifications|length }})</a>    
+                                </li>
+                                <li class="item active first">
+                                    <a class="cl-333" title="Toutes" href="{{ path('notifications_all') }}">Toutes</a>    
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="js-springy cl-eee">
+                        <h3 class="title regular-font uc bd-eee">
+                            <a class="block in cl-333 bd-8 js-springy-trigger" title="Mes statistiques" href="#">Mes statistiques</a>      </h3>
+                        <div class="sub-nav js-springy-performer in-shadow" style="display: none;">
+                            <ul class="vanilla">
+                                <li class="item active first">
+                                    <a class="cl-333 b" title="Dépenses par mois" href="{{ path('statistiques_cout') }}">Dépenses par mois</a>    </li>
+                                <li class="item">
+                                    <a class="cl-333" title="Ma note" href="{{ path('statistiques_eval') }}">Ma note</a>    </li>
+                                <li class="item">
+                                    <a class="cl-333" title="Fréquences des villes visitées" href="{{ path('statistiques_show') }}">Fréquences des villes visitées</a>    </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="seventy hardy">
+            <div class="shut-in">
+                <h1 class="dist regular-font uc">Boîte de réception</h1>
+                <hr>
+                <div class="clear"></div>
+                <div class="txt-rgt dist">
+                    <a class="button dist round cl-fff gd-4 uc padd iconized large js-ajaxform-link" href="{{ path('messages_create') }}">
+                        <span class="left text-part txt-ctr">Envoyer<br><small class="small nc">un nouveau message</small></span>
+                        <span class="right icon-part txt-rgt"><ins class="icon plus-medium"></ins></span>
+                        <span class="clear">&nbsp;</span>
+                    </a>
+                </div>
+                <form action="" method="post" class="vanilla js-confirm">
+                    <table class="zebra vanilla bd-dbl js-clickdelegate">
+                        <thead>
+                            <tr>
+                                <th class="gd-2 no-wrap">Expéditeur</th>
+                                <th class="gd-2 no-wrap">Objet</th>
+                                <th class="gd-2 no-wrap">Envoyé le</th>
+                                <th class="gd-2"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                    {% for item in messages %}
+                                        {% if item.lu == 0 %}
+                                <tr>
+                                    <td class="cl-333">
+                                        <b>{{item.idExpediteur.username}}</b>
+                                    </td>
+                                    <td class="cl-333">
+                                        <b>{{item.objet}}</b>
+                                    </td>
+                                    <td class="cl-333">
+                                        <b>{% if item.dateEnvoie %}{{ item.dateEnvoie|date('Y-m-d H:i:s') }}{% endif %}</b>
+                                    </td>
+                                    <td class="txt-ctr no-wrap">
+                                        <a class="js-ajax-link" title="Lire" href="{{ path('messages_show', { 'id': item.id }) }}">
+                                            <ins class="icon plus-small"></ins>
+                                        </a>
+                                        &nbsp; 
+                                    </td>
+                                </tr>
+                                        {% else %}
+                                <tr>
+                                    <td class="cl-333">
+                                                    {{item.idExpediteur.nomUtilisateur}}
+                                        </td>
+                                        <td class="cl-333">
+                                                    {{item.objet}}
+                                            </td>
+                                            <td class="cl-333">
+                                                    {% if item.dateEnvoie %}{{ item.dateEnvoie|date('Y-m-d H:i:s') }}{% endif %}</b>
+                                                </td>
+                                                <td class="txt-ctr no-wrap">
+                                                    <a class="js-ajax-link" title="Lire" href="{{ path('messages_show', { 'id': item.id }) }}">
+                                                        <ins class="icon plus-small"></ins>
+                                                    </a>
+                                                    &nbsp;
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    {% endif %}
+                                {% endfor %}
+                                    </table>
+                                </form>
+                                <br>
+                                <a style="text-align: right" href="{{ path('messages_all_inbox') }}">Voir tout vos messages</a>...
+
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                    <div class="right-wrapper">
+                        <div class="ad-skyscraper">
+                            <img src="{{ asset("bundles/frontmnrs/images/allthefestivalswithkarzoo-160x600.jpg") }}">
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div id="main-nav-outer">
+                        <div id="navigation">
+                            <ul id="main-nav" class="vanilla">
+                                <li class="nav-item"><a class="nav-link" title="Accueil" href="{{ path("covoiturage_accueil") }}">Accueil</a></li>
+                                <li class="nav-item"><a class="nav-link" title="Les trajets" href="#">Les trajets</a></li>
+                                <li class="nav-item"><a class="nav-link" title="La charte" href="{{ path("covoiturage_laCharte") }}">La charte</a></li>
+                                <li class="nav-item"><a class="nav-link" title="FAQ" href="{{ path("covoiturage_faq") }}">FAQ</a></li>
+                                <li class="nav-item"><a class="nav-link" title="Réclamations" href="{{ path("covoiturage_reclamation") }}">Réclamation</a></li>{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}<li class="nav-item"><a class="nav-link" title="Déconnecter" href="{{ path('fos_user_security_logout') }}">Déconnecter</a></li>{% else %}<li class="nav-item"><a class="nav-link" title="Déconnecter" href="{{ path('fos_user_security_login') }}">S'authentifier</a></li>{% endif %}
+                            </ul>
+                        </div>
+                    </div>          
+                    <a href="#contenu" title="Revenir au contenu">
+                        <ins class="icon blue-car js-car" id="car-1" style="top: 21px;"></ins>
+                        <ins class="icon green-car js-car" id="car-2" style="top: 25px;"></ins>
+                        <ins class="icon pink-car js-car" id="car-3" style="top: 23px;"></ins>
+                    </a>
+                </div>
+    {% endif %}
+{% endblock %}

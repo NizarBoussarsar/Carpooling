@@ -1,0 +1,7 @@
+parameters:
+#    front_mnrs.example.class: Front\MNRSBundle\Example
+
+services:
+#    front_mnrs.example:
+#        class: %front_mnrs.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

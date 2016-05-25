@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Front\MNRSBundle\Entity\Reservations" table="reservations">
+    <indexes>
+      <index name="fk_id_covoitureur_reservations" columns="id_covoitureur"/>
+      <index name="fk_id_covoiturage_reservations" columns="id_covoiturage"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="dateReservation" type="datetime" column="date_reservation" nullable="true"/>
+    <field name="etat" type="boolean" column="etat" nullable="true"/>
+    <many-to-one field="idCovoitureur" target-entity="RayzerCoder\UserBundle\Entity\User">
+      <join-columns>
+        <join-column name="id_covoitureur" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idCovoiturage" target-entity="Covoiturages">
+      <join-columns>
+        <join-column name="id_covoiturage" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

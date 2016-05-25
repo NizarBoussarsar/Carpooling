@@ -1,0 +1,387 @@
+
+{% extends "BackOfficeBackOfficeBundle::layout.html.twig"%}
+
+{% block content %}
+
+<script type="text/javascript" src="http://www.amcharts.com/lib/3/amcharts.js"></script>
+<script type="text/javascript" src="http://www.amcharts.com/lib/3/serial.js"></script>
+<script type="text/javascript" src="http://www.amcharts.com/lib/3/themes/none.js"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+<script src="http://code.highcharts.com/modules/data.js"></script>
+<script src="http://code.highcharts.com/modules/drilldown.js"></script>
+
+
+
+
+<script type="text/javascript" charset="utf8" language="javascript">
+
+
+            function objet_XMLHttpRequest()
+            {
+            var mavariable = null;
+                    if (window.XMLHttpRequest || window.ActiveXObject) {
+            if (window.ActiveXObject) {
+            try {
+            mavariable = new ActiveXObject("Msxml2.XMLHTTP");
+            }
+            catch (e) {
+            mavariable = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            }
+            else {
+            mavariable = new XMLHttpRequest();
+            }
+            }
+            else {
+            alert("Votre navigateur ne supporte pas l'objet XMLHTTPRequest...");
+                    return null;
+            }
+            return mavariable;
+            }
+    function refresh2()
+    {
+    var xhr = objet_XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+
+
+    $(function() {
+    $(document).ready(function() {
+    Highcharts.setOptions({
+    global: {
+    useUTC: false
+    }
+    });
+            var chart;
+            $('#connect').highcharts({
+    chart: {
+    type: 'spline',
+            animation: Highcharts.svg, // don't animate in old IE
+            marginRight: 10,
+            events: {
+    load: function() {
+
+    // set up the updating of the chart each second
+    var nb = xhr.responseText;
+            var series = this.series[0];
+            setInterval(function() {
+    var x = (new Date()).getTime(), // current time
+            y = parseInt(nb);
+            series.addPoint([x, y], true, true);
+    }, 1000);
+    }
+    }
+    },
+            title: {
+    text: 'Covoitureurs connéctés'
+    },
+            xAxis: {
+    type: 'datetime',
+            tickPixelInterval: 150
+    },
+            yAxis: {
+    title: {
+    text: 'Value'
+    },
+            plotLines: [{
+    value: 0,
+            width: 1,
+            color: '#808080'
+    }]
+    },
+            tooltip: {
+    formatter: function() {
+    return '<b>' + this.series.name + '</b><br/>' +
+            Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+            Highcharts.numberFormat(this.y, 2);
+    }
+    },
+            legend: {
+    enabled: false
+    },
+            exporting: {
+    enabled: false
+    },
+            series: [{
+    name: 'Covoitureurs connéctés',
+            data: (function() {
+    // generate an array of random data
+    var data = [],
+            time = (new Date()).getTime(),
+            i;
+            for (i = - 7; i <= 0; i++) {
+    var nb = xhr.responseText;
+            data.push({
+    x: time + i * 1000,
+            y: parseInt(nb)
+    });
+    }
+    return data;
+    })()
+    }]
+    });
+    });
+    });
+    }
+    };
+            xhr.open("POST", "http://localhost/carpooling/web/app_dev.php/admin/home2", true);
+            xhr.send(null);
+    }
+
+
+
+    setInterval("refresh2()", 1000);</script>
+    <script type="text/javascript" charset="utf8" language="javascript">
+                var chartData = [
+                {% for  n in topnote %}
+        {
+        "nom": "{{n.nom}}",
+                "note": "{{n.note}}"
+        },
+                {% endfor%}
+
+        ];
+                $(function() {
+        $('#barchart').highcharts({
+        chart: {
+        type: 'column'
+        },
+                title: {
+        text: 'Top 5 des covoitureurs'
+        },
+                subtitle: {
+        text: ''
+        },
+                xAxis: {
+        type: 'category',
+                labels: {
+        rotation: - 45,
+                align: 'right',
+                style: {
+        fontSize: '13px',
+                fontFamily: 'Verdana, sans-serif'
+        }
+        }
+        },
+                yAxis: {
+        min: 0,
+                title: {
+        text: 'Note (Evaluation points)'
+        }
+        },
+                legend: {
+        enabled: false
+        },
+                tooltip: {
+        pointFormat: 'Top 5 Covoitureurs',
+        },
+                series: [{
+        name: 'Note',
+                data: [
+                {% for  n in topnote %}
+        ['{{n.nom}}',{{n.note}}],
+                     {% endfor%}
+
+        ],
+                dataLabels: {
+        enabled: true,
+                rotation: - 90,
+                color: '#FFFFFF',
+                align: 'right',
+                x: 4,
+                y: 10,
+                style: {
+        fontSize: '13px',
+                fontFamily: 'Verdana, sans-serif',
+                textShadow: '0 0 3px black'
+        }
+        }
+        }]
+        });
+        });</script>    
+
+        <div class="col-lg-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i> Covoitureurs connéctés en temps réel
+
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div id="connect" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bar-chart-o fa-fw"></i> TOP 5
+
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="row">
+
+                        <div>
+                            <div id="barchart"></div>
+                        </div>
+                        <!-- /.col-lg-8 (nested) -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-8 -->
+        <div class="col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="fa fa-bell fa-fw"></i> Notifications Panel
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="list-group">
+
+
+                        <a href="{{path("back_office_reclamation")}}" , class="list-group-item">
+                            <i class="fa fa-envelope fa-fw"></i> {{nbr_rec|length}} Réclamation reçues
+
+                        </a>
+
+                    </div>
+                    <!-- /.list-group -->
+
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <script type="text/javascript" charset="utf8" language="javascript">
+                        $(function () {
+                $('#container').highcharts({
+                chart: {
+                plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false
+                },
+                        title: {
+                text: 'Pourrcentage Sexe'
+                },
+                        tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                        plotOptions: {
+                pie: {
+                allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                        style: {
+                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                }
+                }
+                }
+                },
+                        series: [{
+                type: 'pie',
+                        name: 'Browser share',
+                        data: [
+               {% for  s in sexe %}
+                ['{{s.sexe}}',{{s.nbr}}],
+                     {% endfor%}
+                ]
+                }]
+                });
+                });</script> 
+                <!-- /.panel -->
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bar-chart-o fa-fw"></i> Pourcentage 
+                    </div>
+                    <div class="panel-body">
+                        <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                        <a href="#" class="btn btn-default btn-block">View Details</a>
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <script type="text/javascript" charset="utf8" language="javascript">
+                            $(function () {
+                    $('#etat').highcharts({
+                    chart: {
+                    plotBackgroundColor: null,
+                            plotBorderWidth: null,
+                            plotShadow: false
+                    },
+                            title: {
+                    text: 'Pourrcentage Etat'
+                    },
+                            tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                    },
+                            plotOptions: {
+                    pie: {
+                    allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                    enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                            style: {
+                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                    }
+                    }
+                    },
+                            series: [{
+                    type: 'pie',
+                            name: 'Browser share',
+                            data: [
+   {% for  e in etat %}
+                           {% if (e.et=='1') %}
+                    ['En attente',{{e.nbr}}],
+                        {%endif%}
+                               {% if (e.et=='0') %}
+                    ['Bloqué',{{e.nbr}}],
+                        {%endif%}
+                         {% if (e.et=='2') %}
+                    ['Actif',{{e.nbr}}],
+                        {%endif%}
+         {% endfor%}
+                    ]
+                    }]
+                    });
+                    });
+
+                    </script> 
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Pourcentage 
+                        </div>
+                        <div class="panel-body">
+                            <div id="etat" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                            <a href="#" class="btn btn-default btn-block">View Details</a>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+
+                    <!-- /.panel -->
+
+                </div>
+
+
+
+
+                <!-- Page-Level Plugin Scripts - Dashboard -->
+
+
+
+                <!-- SB Admin Scripts - Include with every page -->
+
+
+                <!-- Page-Level Demo Scripts - Dashboard - Use for reference -->
+
+
+{% endblock %}

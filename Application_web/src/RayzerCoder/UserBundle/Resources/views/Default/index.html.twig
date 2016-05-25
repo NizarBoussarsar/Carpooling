@@ -1,0 +1,252 @@
+{% extends "RayzerCoderUserBundle::layout.html.twig" %}
+{% block content %}
+<div class="shadow main container round" id="contenu">
+    <div class="content-wrapper">
+        <div class="thirty laurel">
+        <div class="shadow gd-8 no-padd shut-nav">
+                    <ul class="vanilla bd bd-eee">
+                        <li class="js-springy cl-eee opened">
+                            <h3 class="title regular-font uc bd-eee">
+                                <a class="block in cl-333 bd-8 js-springy-trigger cl-eee" title="Mes messages" href="#">Mes messages</a>      </h3>
+                            <div class="sub-nav js-springy-performer in-shadow">
+                                <ul class="vanilla">
+                                    <li class="item active first">
+                                        <a class="cl-333" title="Boîte de réception" href="{{ path('messages_show_inbox') }}">Boîte de réception ({{messages|length}})</a>    </li>
+                                    <li class="item">
+                                        <a class="cl-333" title="Messages envoyés" href="{{ path('messages_show_outbox') }}">Messages envoyés</a>    </li>
+                                    <li class="item">
+                                        <a class="cl-333" title="Envoyer un message" href="{{ path('messages_create') }}">Envoyer un message</a>    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="js-springy cl-eee">
+                            <h3 class="title regular-font uc bd-eee">
+                                <a class="block in cl-333 bd-8 js-springy-trigger" title="Mes notifications" href="" >Mes notifications</a>
+                            </h3>
+                            <div class="sub-nav js-springy-performer in-shadow" style="display: none;">
+                                <ul class="vanilla">
+                                    <li class="item active first">
+                                        <a class="cl-333" title="Non lues" href="{{ path('notifications_nonlues') }}">Non lues ({{notifications|length}})</a>    
+                                    </li>
+                                    <li class="item active first">
+                                        <a class="cl-333" title="Toutes" href="{{ path('notifications_all') }}">Toutes</a>    
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="js-springy cl-eee">
+                        <h3 class="title regular-font uc bd-eee">
+                            <a class="block in cl-333 bd-8 js-springy-trigger" title="Mes statistiques" href="#">Mes statistiques</a>      </h3>
+                        <div class="sub-nav js-springy-performer in-shadow" style="display: none;">
+                            <ul class="vanilla">
+                                <li class="item active first">
+                                    <a class="cl-333 b" title="Dépenses par mois" href="{{ path('statistiques_cout') }}">Dépenses par mois</a>    </li>
+                                <li class="item">
+                                    <a class="cl-333" title="Ma note" href="{{ path('statistiques_eval') }}">Ma note</a>    </li>
+                                <li class="item">
+                                    <a class="cl-333" title="Fréquences des villes visitées" href="{{ path('statistiques_show') }}">Fréquences des villes visitées</a>    </li>
+                            </ul>
+                        </div>
+                    </li>
+                    </ul>
+                </div>
+            <div class="shadow gd-8 no-padd shut-nav">
+                <ul class="vanilla bd bd-eee">
+                    <li class="js-springy opened">
+                        <h3 class="title regular-font uc bd-eee">
+                            <a class="block in cl-333 bd-8 js-springy-trigger cl-eee" title="Mon profil" href="/fr/mon-compte/mon-profil">Mon profil</a>      </h3>
+
+
+                        <div class="sub-nav js-springy-performer in-shadow">
+                            <ul class="vanilla">
+                                <li class="item first">
+                                    <a class="cl-333" title="Infos personnelles" href="#">Infos personnelles</a>    </li>
+                                <li class="item">
+                                    <a class="cl-333" title="Mon compte" href="#">Mon compte</a>    </li>
+                                <li class="item">
+                                    <a class="cl-333" title="Confidentialité" href="#">Confidentialité</a>    </li>
+                                <li class="item">
+                                    <a class="cl-333" title="Mes alertes e-mail" href="#">Mes alertes e-mail</a>    </li>
+                            </ul>
+                        </div>
+
+                    </li>
+                    <li class="js-springy">
+                        <h3 class="title regular-font uc bd-eee">
+                            <a class="block in cl-333 bd-8 js-springy-trigger" title="Mes trajets" href="#">Mes trajets</a>      </h3>
+
+
+                        <div class="sub-nav js-springy-performer in-shadow js-hide">
+                            <ul class="vanilla">
+                                <li class="item first">
+                                    <a class="cl-333" title="Trajets proposés" href="#">Trajets proposés</a>    </li>
+                                <li class="item">
+                                    <a class="cl-333" title="Proposer un nouveau trajet" href="#">Proposer un nouveau trajet</a>    </li>
+                                <li class="item">
+                                    <a class="cl-333" title="Mes véhicules" href="#">Mes véhicules</a>    </li>
+                            </ul>
+                        </div>
+
+                    </li>
+                    <li class="js-springy">
+                        <h3 class="title regular-font uc bd-eee">
+                            <a class="block in cl-333 bd-8 js-springy-trigger" title="À propos de moi" href="#">À propos de moi</a>      </h3>
+
+
+                        <div class="sub-nav js-springy-performer in-shadow js-hide">
+                            <ul class="vanilla">
+                                <li class="item first">
+                                    <a class="cl-333" title="Mes traits de caractère" href="#">Mes traits de caractère</a>    </li>
+                                <li class="item">
+                                    <a class="cl-333" title="Mes préférences" href="#">Mes préférences</a>    </li>
+                                <li class="item">
+                                    <a class="cl-333" title="Mes intérêts" href="#">Mes intérêts</a>    </li>
+                                <li class="item">
+                                    <a class="cl-333" title="Mes réseaux sociaux" href="#">Mes réseaux sociaux</a>    </li>
+                            </ul>
+                        </div>
+
+                    </li>
+                    <li class="js-springy">
+                        <h3 class="title regular-font uc bd-eee">
+                            <a class="block in cl-333 bd-8 js-springy-trigger" title="Mes contacts" href="#">Mes contacts</a>      </h3>
+
+
+                        <div class="sub-nav js-springy-performer in-shadow js-hide">
+                            <ul class="vanilla">
+                                <li class="item first">
+                                    <a class="cl-333" title="Liste de mes contacts" href="#">Liste de mes contacts</a>    </li>
+                                <li class="item">
+                                    <a class="cl-333" title="Ajouter un nouveau contact" href="#">Ajouter un nouveau contact</a>    </li>
+                            </ul>
+                        </div>
+
+                    </li>
+                    <li class="js-springy">
+                        <h3 class="title regular-font uc bd-eee">
+                            <a class="block in cl-333 bd-8 js-springy-trigger" title="Mes messages" href="#">Mes messages</a>      </h3>
+
+
+                        <div class="sub-nav js-springy-performer in-shadow js-hide">
+                            <ul class="vanilla">
+                                <li class="item first">
+                                    <a class="cl-333" title="Boîte de réception" href="#">Boîte de réception</a>    </li>
+                                <li class="item">
+                                    <a class="cl-333" title="Messages envoyés" href="#">Messages envoyés</a>    </li>
+                                <li class="item">
+                                    <a class="cl-333" title="Envoyer un message" href="#">Envoyer un message</a>    </li>
+                            </ul>
+                        </div>
+
+                    </li>
+                    <li class="js-springy">
+                        <h3 class="title regular-font uc bd-eee">
+                            <a class="block in cl-333 bd-8 js-springy-trigger" title="Mes évaluations" href="#">Mes évaluations</a>      </h3>
+
+
+                        <div class="sub-nav js-springy-performer in-shadow js-hide">
+                            <ul class="vanilla">
+                                <li class="item first">
+                                    <a class="cl-333" title="Les évaluations reçues" href="#">Les évaluations reçues</a>    </li>
+                                <li class="item">
+                                    <a class="cl-333" title="Les évaluations données" href="#">Les évaluations données</a>    </li>
+                                <li class="item">
+                                    <a class="cl-333" title="Évaluer un covoitureur" href="#">Évaluer un covoitureur</a>    </li>
+                            </ul>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="shadow gd-eee shut-in">
+                <div class="bg-fff padd-half bd bd-ccc rating-box round">
+                    <span class="nc">évaluations :</span>
+                    <div class="rating right" id="js-ajax-update-rating">
+                        <p class="txt-ctr"><abbr title="non-applicable">-</abbr></p><p>
+                        </p></div>
+                    <div class="clear"></div>
+                </div>  </div>
+
+            <div class="txt-ctr">
+                <a href="/fr/mon-compte/supprimer-mon-compte" class="em cl-333"><ins class="icon cancel-small"></ins>&nbsp;supprimer mon compte</a>
+            </div>
+
+        </div>
+        <div class="seventy hardy">
+
+
+
+            <h3>user0123, bienvenue dans votre espace personnel</h3>
+
+            <div class="clear"></div>
+
+
+
+
+            <div class="content-menu">
+                <div class="laurel gd-eee shut-in round">
+                    <h3 class="title uc cl-1 regular-font">Mon profil<ins class="dot txt-shadow-2">•</ins></h3>
+
+                    <div class="rel">
+                        <ul class="vanilla">
+                            <li class="item first">
+                                <a class="cl-333" title="Infos personnelles" href="#">Infos personnelles</a>          </li>
+                            <li class="item">
+                                <a class="cl-333" title="Mon compte" href="#">Mon compte</a>          </li>
+                            <li class="item">
+                                <a class="cl-333" title="Confidentialité" href="#">Confidentialité</a>          </li>
+                            <li class="item">
+                                <a class="cl-333" title="Mes alertes e-mail" href="#">Mes alertes e-mail</a>          </li>
+                        </ul>
+                        <div class="deco profil"></div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="right-wrapper">
+
+
+        <!-- No add, probably a Google one -->
+        <div class="ad-skyscraper">
+
+
+            <a href="http://festivals.karzoo.eu/" rel="external" rev="vote-for" target="_blank" class="block">
+
+                <img alt="Tous les festivals avec Karzoo" src="//static0.karzoo.eu/uploads/ads/medias/allthefestivalswithkarzoo-160x600.jpg">
+            </a>
+
+
+        </div>
+        <div class="menu-list bd-ccc bd type-1">
+            <h4 class="gd-4 uc">Calculatrices <ins class="icon calculator right"></ins></h4>
+            <ul class="vanilla">
+                <li><ins class="icon sheet-medium"></ins> <a title="Émissions de CO2" href="/fr/calculatrices/emissions-de-co2">Émissions de CO2</a></li>
+                <li><ins class="icon euro-medium"></ins> <a title="Vos économies de covoiturage" href="#">Vos économies de covoiturage</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+    <div id="main-nav-outer">
+         <div id="navigation">
+               <ul id="main-nav" class="vanilla">
+                    <li class="nav-item"><a class="nav-link" rel="home" title="Accueil" href="{{ path("covoiturage_accueil") }}">Accueil</a></li>{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}<li class="nav-item"><a class="nav-link" title="Mon Profile" href="{{ path('fos_user_profile_show') }}">Mon Profile</a></li>{% endif %} 
+                     <li class="nav-item"><a class="nav-link" rel="recherche" title="Recherche" href="{{ path("rayzer_coder_user_simple_search") }}">Recherche Covoitureur</a></li>
+                    <li class="nav-item"><a class="nav-link" rel="recherche" title="Recherche" href="{{ path("rayzer_coder_user_advanced_search") }}">Recherche Avancée</a></li>
+                  
+                     <li class="nav-item"><a class="nav-link" rel="contents" title="Les trajets" href="#">Les trajets</a></li>
+                    <li class="nav-item"><a class="nav-link" title="La charte" href="{{ path("covoiturage_laCharte") }}">La charte</a></li>
+                    <li class="nav-item"><a class="nav-link" title="FAQ" href="{{ path("covoiturage_faq") }}">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" title="Réclamations" href="{{ path("covoiturage_reclamation") }}">Réclamation</a></li>{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}<li class="nav-item"><a class="nav-link" title="Déconnecter" href="{{ path('fos_user_security_logout') }}">Déconnecter</a></li>{% else %}<li class="nav-item"><a class="nav-link" title="Déconnecter" href="{{ path('fos_user_security_login') }}">S'authentifier</a></li>{% endif %}
+                </ul>
+            </div>
+    </div>          <a href="#contenu" title="Revenir au contenu">
+        <ins class="icon blue-car js-car" id="car-1" style="top: 157px;"></ins>
+        <ins class="icon green-car js-car" id="car-2" style="top: 52px;"></ins>
+        <ins class="icon pink-car js-car" id="car-3" style="top: 64px;"></ins>
+    </a>
+</div>
+                {% endblock %}  

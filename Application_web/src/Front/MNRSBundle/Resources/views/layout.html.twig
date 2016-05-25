@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+    <head>
+        <script>document.getElementsByTagName('html')[0].className = 'has-js'</script>
+        <meta charset="utf-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title>
+            {% block title %} 
+            {% endblock %}
+            </title>
+        {% block style %} 
+        {% endblock %}
+            <link href="//static0.karzoo.eu/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+            <link rel="stylesheet" type="text/css" media="screen" href="//static0.karzoo.eu/css/minified.main.gz.css?20130118" />
+            <link rel="stylesheet" type="text/css" media="screen" href="//static0.karzoo.eu/css/themes/default/minified.theme.gz.css?20120120" />
+            <style> .modalDialog { position: fixed; font-family: Arial, Helvetica, sans-serif; top: 0; right: 0; bottom: 0; left: 0; background: rgba(0,0,0,0.8); z-index: 99999; opacity:0; -webkit-transition: opacity 400ms ease-in; -moz-transition: opacity 400ms ease-in; transition: opacity 400ms ease-in; pointer-events: none; } .modalDialog:target { opacity:1; pointer-events: auto; } .modalDialog > div { width: 400px; position: relative; margin: 10% auto; padding: 5px 20px 13px 20px; border-radius: 10px; background: #fff; background: -moz-linear-gradient(#fff, #999); background: -webkit-linear-gradient(#fff, #999); background: -o-linear-gradient(#fff, #999); } .close { background: #606061; color: #FFFFFF; line-height: 25px; position: absolute; right: -12px; text-align: center; top: -10px; width: 24px; text-decoration: none; font-weight: bold; -webkit-border-radius: 12px; -moz-border-radius: 12px; border-radius: 12px; -moz-box-shadow: 1px 1px 3px #000; -webkit-box-shadow: 1px 1px 3px #000; box-shadow: 1px 1px 3px #000; } .close:hover { background: #00d9ff; } </style>
+
+        </head>
+        <body class="fr" onload="goma();">
+
+            <div id="vibes-outer">
+                <div id="vibes-inner">
+                    <div id="vibes-bubble">
+                        <div id="header">
+                            <ul id="skiplink" class="vanilla">
+                                <li class="item"><a class="link" href="#contenu"><span class="in">Aller au contenu</span></a></li>
+                                <li class="item"><a class="link" href="#navigation"><span class="in">Aller à la navigation</span></a></li>
+                            </ul>
+                        </div>
+                        <span style="margin-left: 180px" id="logo"><img alt="Logo - Covoiturage Tunisie" src="http://covoiturage.laposte.net/images/logo_laposte.gif" /></span>
+                    </div>
+                {% block headbox %}
+                {% endblock %}
+
+                {% block content %}
+                {% endblock %} 
+                    <ul class="v-list vanilla">
+                        <li class="v-item"><a href="{{ path('covoiturages_find_A') }}" class="v-tab uc v-txt txt-ctr box cl-fff bg-3 bottom-round" rel="contents">Recherche Avancée</a></li>
+                        <li class="v-item"><a href="{{ path('map_recherche') }}" class="v-tab uc v-txt txt-ctr box cl-fff bg-2 bottom-round" rel="contents">Recherche Map</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer-grass">
+        <div id="footer-tree">
+        </div>
+    </div>
+    <div id="footer">
+        <div class="main container" id="footer-cities-columns">
+            <div class="footer-col hardy js-unify-height box">
+            </div>
+            <div class="clear"></div>
+        </div>    
+        <div class="main container" id="footer-nav">
+            <ul class="vanilla txt-ctr footer-list">
+                <li class="nav-item first"><a class="nav-link" title="Recherche" href="{{ path('covoiturages_find_A') }}">Recherche</a></li>
+                <li class="nav-item"><a class="nav-link" title="La charte" href="{{ path("covoiturage_laCharte") }}">La charte</a></li>
+                <li class="nav-item"><a class="nav-link" title="Contact" href="{{ path('reclamations_create') }}">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="//static0.karzoo.eu/js/minified.main.gz.js?20120806"></script>
+    </body>
+</html>

@@ -1,0 +1,51 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Villes list</h1>
+
+    <table class="records_list" border="1">
+        <thead>
+            <tr>
+                <th>Codepostal</th>
+                <th>Localite</th>
+                <th>Delegation</th>
+                <th>Gouvernorat</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+              {# <td><a href="{{ path('villes_show', { 'id': entity.id }) }}">{{ entity.codePostal }}</a></td> #}
+                <td>{{ entity.localite }}</td>
+                <td>{{ entity.delegation }}</td>
+                <td>{{ entity.gouvernorat }}</td>
+                <td>{{ entity.latitude }}</td>
+                <td>{{ entity.longitude }}</td>
+                <td>{{ entity.id }}</td>
+                <td>
+                <ul>
+                    <li>
+                      {#  <a href="{{ path('villes_show', { 'id': entity.id }) }}">show</a> #}
+                    </li>
+                    <li>
+                       {# <a href="{{ path('villes_edit', { 'id': entity.id }) }}">edit</a> #}
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('villes_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

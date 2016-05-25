@@ -1,0 +1,25 @@
+{# empty Twig template #}
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+<h1>Detours creation</h1>
+
+
+
+
+<form action="" method="post" {{form_enctype(form)}}>
+
+   {{form_widget(form)}}
+    <input type="submit"/>
+
+</form>
+
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('detours') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

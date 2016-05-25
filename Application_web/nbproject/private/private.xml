@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/xampp/htdocs/Carpooling/src/BackOffice/BackOfficeBundle/Resources/views/layout.html.twig</file>
+            <file>file:/C:/xampp/htdocs/Carpooling/src/BackOffice/BackOfficeBundle/Resources/views/Default/home.html.twig</file>
+            <file>file:/C:/xampp/htdocs/Carpooling/src/BackOffice/BackOfficeBundle/Controller/DefaultController.php</file>
+            <file>file:/C:/xampp/htdocs/Carpooling/app/config/security.yml</file>
+            <file>file:/C:/xampp/htdocs/Carpooling/app/config/routing.yml</file>
+            <file>file:/C:/xampp/htdocs/Carpooling/src/BackOffice/BackOfficeBundle/Resources/config/routing.yml</file>
+            <file>file:/C:/xampp/htdocs/Carpooling/src/RayzerCoder/UserBundle/Resources/views/Default/rechercheUser.html.twig</file>
+            <file>file:/C:/xampp/htdocs/Carpooling/src/RayzerCoder/UserBundle/Resources/views/Default/resultatRecherche.html.twig</file>
+            <file>file:/C:/xampp/htdocs/Carpooling/src/RayzerCoder/UserBundle/Resources/views/Default/show.html.twig</file>
+            <file>file:/C:/xampp/htdocs/Carpooling/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/views/Security/login.html.twig</file>
+            <file>file:/C:/xampp/htdocs/Carpooling/src/Front/MNRSBundle/Resources/views/layout.html.twig</file>
+            <file>file:/C:/xampp/htdocs/Carpooling/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/views/layout.html.twig</file>
+            <file>file:/C:/xampp/htdocs/Carpooling/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/views/Registration/register.html.twig</file>
+            <file>file:/C:/xampp/htdocs/Carpooling/vendor/friendsofsymfony/user-bundle/FOS/UserBundle/Resources/views/Registration/register_content.html.twig</file>
+            <file>file:/C:/xampp/htdocs/Carpooling/src/RayzerCoder/UserBundle/Resources/views/layout.html.twig</file>
+            <file>file:/C:/xampp/htdocs/Carpooling/src/RayzerCoder/UserBundle/Resources/views/Default/editAvatar.html.twig</file>
+        </group>
+    </open-files>
+</project-private>

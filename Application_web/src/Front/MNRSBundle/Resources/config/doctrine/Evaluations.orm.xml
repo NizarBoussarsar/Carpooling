@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Front\MNRSBundle\Entity\Evaluations" table="evaluations">
+    <indexes>
+      <index name="fk_id_covoiturage" columns="id_covoiturage"/>
+      <index name="fk_id_evaluateur" columns="id_evaluateur"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="message" type="string" column="message" length="255" nullable="true"/>
+    <field name="note" type="integer" column="note" nullable="true"/>
+    <field name="dateEvaluation" type="datetime" column="date_evaluation" nullable="true"/>
+    <many-to-one field="idEvaluateur" target-entity="RayzerCoder\UserBundle\Entity\User">
+      <join-columns>
+        <join-column name="id_evaluateur" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idCovoiturage" target-entity="\Front\MNRSBundle\Entity\Covoiturages">
+      <join-columns>
+        <join-column name="id_covoiturage" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

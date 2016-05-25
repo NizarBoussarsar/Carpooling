@@ -1,0 +1,51 @@
+{% extends "BackOfficeBackOfficeBundle::layout.html.twig"%}
+
+{% block content %}
+
+
+
+
+<table  id="example"class="display table table-striped table-bordered table-hover dataTable no-footer" cellspacing="0" width="100%" role="grid" aria-describedby="example_info">
+    <thead>
+        <tr role="row">
+            <th class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" aria-sort="ascending"  style="width: 156px;">id</th>
+            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"  style="width: 251px;">titre</th>
+            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 111px;">ville_depart</th>
+            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"  style="width: 47px;">ville arrive</th>
+            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"  style="width: 106px;">nom createur</th>
+            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"  style="width: 93px;">date creation</th>
+            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"  style="width: 93px;">heure depart</th>
+            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"  style="width: 93px;">Nombre de place</th>
+            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"  style="width: 93px;">prix</th>
+            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"  style="width: 93px;">supprimer</th></tr>
+    </thead>
+
+    <tbody>
+            {% for modele in modeles %}
+            <tr role="row" class="odd">
+                <td>{{modele.Id}}</td>
+                <td>{{modele.titre}}</td>
+                <td>{{modele.idVilleDepart.localite}}</td>
+                <td>{{modele.idVilleArrivee.localite}}</td>
+                <td>{{modele.idCreateur.id}}</td>
+                <td>{{modele.dateCreation|date('y-m-d')}}</td>
+                <td>{{modele.HeureDepart|date('H:m:s')}}</td>
+                <td>{{modele.nombrePlaces}}</td>
+                <td>{{modele.prix}}</td>
+                <td> <a href="{{path("back_office_impossible_user")}}">supprimer</a></td>
+            </tr>
+    {%else %}
+            <tr>Pas de covoiturages </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+
+
+
+
+
+    <!-- /.table-responsive -->
+{% endblock %}{# empty Twig template #}
+{# empty Twig template #}

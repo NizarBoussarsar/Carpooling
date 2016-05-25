@@ -1,0 +1,178 @@
+{% extends "RayzerCoderUserBundle::layout.html.twig" %}
+{% block content %}
+
+
+
+
+<div style="height:500px;" class="shadow main container round" id="contenu">
+
+
+
+    <div class="content-wrapper">
+
+        <div class="thirty laurel">
+            <div class="shadow shut-in gd-eee profil-box padd-half no-dist">
+                <h2 class="gd-1 padd-half ns nc"> <span class="uc"></span> &nbsp;</h2>
+
+                <div class="avatar-container-box">
+                    <div class="avatar-box bd bg-fff bd-ccc left">
+                        <div class="js-ajax-update-avatar" style="height: 75px;">
+
+
+    {% if user.avatar %}
+                            <img class="avatar" alt="Avatar - {{ 'profile.show.username'|trans }}:{{ user.username }}" title="{{ user.username }}"src="{{ asset(user.getWebPath()) }}">      </div>
+                       {% else %}
+                        Pas d'image de profil chargée !
+{% endif %}
+
+
+                        <a href="/fr/mon-compte/mon-profil/mon-avatar" id="js-ajaxform-edit-avatar" class="edit-link no-hover bg-000 cl-fff alpha-70 nc no-wrap"><ins class="icon edit-small"></ins>&nbsp;Modifier</a>
+                    </div>
+
+                    <h2 class="vanilla nick cl-5 nc ns">{{ user.username }}</h2>
+                </div>
+
+            </div>
+
+            <div class="shadow gd-8 no-padd shut-nav">
+                <ul class="vanilla bd bd-eee">
+                    <li>
+
+{% if user.avatar %}
+                        <img style="width:150px; height: 150px" src="{{ asset(user.getWebPath()) }}" />
+{% else %}
+                        Pas d'image de profil chargée !
+{% endif %}
+
+                        <h1>Charger une image de profil</h1>
+
+                        <form action="#" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+                                <input type="submit" value="Uploader" />
+                            </form>
+
+
+                        </li>
+                    </ul>
+                </div>
+                <div class="shadow gd-eee shut-in">
+                    <div class="bg-fff padd-half bd bd-ccc rating-box round">
+                        <span class="nc">évaluations :</span>
+                        <div class="rating right" id="js-ajax-update-rating">
+                            <p class="txt-ctr"><abbr title="non-applicable">{{user.note}}</abbr></p><p>
+                            </p></div>
+                        <div class="clear"></div>
+                    </div>  </div>
+
+
+
+            </div>
+            <div class="seventy hardy">
+
+
+
+                <h3>Bienvenue sur le profil de l'utilisateur {{ user.username }}</h3>
+
+                <div class="clear"></div>
+                <div class="seventy hardy">
+
+
+
+                    <div class="clear"></div>
+
+
+
+                    <h4>Nom utilisateur : {{user.username}} </h4>
+
+                    <h4>Nom : {{user.nom}}</h4>
+                    <h4>Prenom : {{user.prenom}}</h4>
+                    <h4>Sexe :{% if user.sexe == "h" %}Homme{% else %}Femme{% endif %}</h4>
+
+                    <h4>Date de naissance {{user.dateNaissance|date('d/m/Y')}}</h4>
+
+                    <h4>Date d'inscription {{user.dateEnregistrement|date('d/m/Y')}}</h4>
+
+                    <h4>Numero Telephone {{user.telephone}}</h4>
+                    <div class="clear"></div>
+                </div>
+            {{ form(form) }}
+            </div>
+
+
+
+
+            <div class="clear"></div>
+
+            <div id="main-nav-outer">
+                <div id="navigation">
+                    <ul id="main-nav" class="vanilla">
+                        <li class="nav-item"><a class="nav-link" rel="home" title="Accueil" href="{{ path("covoiturage_accueil") }}">Accueil</a></li>{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}<li class="nav-item"><a class="nav-link" title="Mon Profile" href="{{ path('fos_user_profile_show') }}">Mon Profile</a></li>{% endif %} 
+                        <li class="nav-item"><a class="nav-link" rel="recherche" title="Recherche" href="{{ path("rayzer_coder_user_simple_search") }}">Recherche Covoitureur</a></li>
+                        <li class="nav-item"><a class="nav-link" rel="recherche" title="Recherche" href="{{ path("rayzer_coder_user_advanced_search") }}">Recherche Avancée</a></li>
+
+                        <li class="nav-item"><a class="nav-link" rel="contents" title="Les trajets" href="#">Les trajets</a></li>
+                        <li class="nav-item"><a class="nav-link" title="La charte" href="{{ path("covoiturage_laCharte") }}">La charte</a></li>
+                        <li class="nav-item"><a class="nav-link" title="FAQ" href="{{ path("covoiturage_faq") }}">FAQ</a></li>
+                        <li class="nav-item"><a class="nav-link" title="Réclamations" href="{{ path("covoiturage_reclamation") }}">Réclamation</a></li>{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}<li class="nav-item"><a class="nav-link" title="Déconnecter" href="{{ path('fos_user_security_logout') }}">Déconnecter</a></li>{% else %}<li class="nav-item"><a class="nav-link" title="Déconnecter" href="{{ path('fos_user_security_login') }}">S'authentifier</a></li>{% endif %}
+
+                    
+
+
+
+                        </ul>
+                    </div>
+                </div>          <a href="#contenu" title="Revenir au contenu">
+                    <ins class="icon blue-car js-car" id="car-1" style="top: 75px;"></ins>
+                    <ins class="icon green-car js-car" id="car-2" style="top: 89px;"></ins>
+                    <ins class="icon pink-car js-car" id="car-3" style="top: 84px;"></ins>
+                </a>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

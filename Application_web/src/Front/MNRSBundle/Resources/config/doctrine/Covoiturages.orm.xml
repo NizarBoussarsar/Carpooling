@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Front\MNRSBundle\Entity\Covoiturages" table="covoiturages">
+    <indexes>
+      <index name="fk_id_ville_depart_covoiturages" columns="id_ville_depart"/>
+      <index name="fk_id_ville_arrivee_covoiturages" columns="id_ville_arrivee"/>
+      <index name="fk_id_createur_covoiturages" columns="id_createur"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="titre" type="string" column="titre" length="255" nullable="true"/>
+    <field name="description" type="text" column="description" nullable="true"/>
+    <field name="dateCreation" type="datetime" column="date_creation" nullable="true"/>
+    <field name="dateMiseajour" type="datetime" column="date_miseajour" nullable="true"/>
+    <field name="dateDepart" type="date" column="date_depart" nullable="true"/>
+    <field name="heureDepart" type="time" column="heure_depart" nullable="true"/>
+    <field name="nombrePlaces" type="integer" column="nombre_places" nullable="true"/>
+    <field name="prix" type="float" column="prix" precision="10" scale="0" nullable="true"/>
+    <field name="fumeur" type="boolean" column="fumeur" nullable="true"/>
+    <field name="reserveeFemmes" type="boolean" column="reservee_femmes" nullable="true"/>
+    <many-to-one field="idVilleDepart" target-entity="Villes">
+      <join-columns>
+        <join-column name="id_ville_depart" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idVilleArrivee" target-entity="Villes">
+      <join-columns>
+        <join-column name="id_ville_arrivee" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idCreateur" target-entity="RayzerCoder\UserBundle\Entity\User">
+      <join-columns>
+        <join-column name="id_createur" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

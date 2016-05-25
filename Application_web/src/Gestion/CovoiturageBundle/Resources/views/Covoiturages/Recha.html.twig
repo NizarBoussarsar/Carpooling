@@ -1,0 +1,296 @@
+{% extends "FrontMNRSBundle::layout.html.twig" %}
+
+{% block headbox %}
+
+<style>
+        .black_overlay{
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index:1001;
+            -moz-opacity: 0.8;
+            opacity:.80;
+            filter: alpha(opacity=80);
+        }
+        .white_content {
+            display: none;
+            position: absolute;
+            top: 25%;
+            left: 25%;
+            width: 50%;
+            height: 50%;
+            padding: 16px;
+           {# border: 16px solid orange;#}
+            background-color: white;
+            z-index:1002;
+            overflow: auto;
+
+            border:none 5px #000000;
+            -moz-border-radius-topleft: 24px;
+            -moz-border-radius-topright:5px;
+            -moz-border-radius-bottomleft:22px;
+            -moz-border-radius-bottomright:5px;
+            -webkit-border-top-left-radius:24px;
+            -webkit-border-top-right-radius:5px;
+            -webkit-border-bottom-left-radius:22px;
+            -webkit-border-bottom-right-radius:5px;
+            border-top-left-radius:24px;
+            border-top-right-radius:5px;
+            border-bottom-left-radius:22px;
+            border-bottom-right-radius:5px;
+
+
+
+
+
+
+            -moz-box-shadow: 9px 12px 15px #000000;
+            -webkit-box-shadow: 9px 12px 15px #000000;
+            box-shadow: 9px 12px 15px #000000;      
+
+        }
+
+
+    </style>
+
+ {% endblock %}   
+{% block content %}
+    <div class="shadow main container round" id="contenu">
+        <div class="content-wrapper">
+
+
+
+            <form action="" class="vanilla" method="POST" id="formulaire-de-recherche">
+
+                <script type="text/javascript">
+                    // Load these fields only with javascript
+                    document.write('<input type="hidden" name="departure[lat]" id="departure_lat" />');
+                    document.write('<input type="hidden" name="departure[lng]" id="departure_lng" />');
+                    document.write('<input type="hidden" name="destination[lat]" id="destination_lat" />');
+                    document.write('<input type="hidden" name="destination[lng]" id="destination_lng" />');
+                    </script><input type="hidden" name="departure[lat]" id="departure_lat"><input type="hidden" name="departure[lng]" id="departure_lng"><input type="hidden" name="destination[lat]" id="destination_lat"><input type="hidden" name="destination[lng]" id="destination_lng">
+
+
+                    <div class="forty laurel round bd-ccc gd-ccc bd form rel" id="search-journey-box" style="min-height: 348px">
+                        <h2 class="h1 vanilla top-round heading dist-dbl bg-fff cl-lt-6 uc">Recherche de trajet <ins class="icon look-medium right"></ins></h2>
+
+
+{##}
+
+                        <div class="padd b">
+                            <div class="form-col half hardy">
+                                <label class="hidden" for="destination_country">Gouvernorat</label>      
+
+
+
+                            </div>
+
+
+                            <br>search : <input name ="search" type="text"  id="s">
+
+                            <div class="txt-rgt">
+                                <br><input type="submit" class="gd-6 round padd-half b uc" value="Lancer la recherche  " ><small class="arrow-right">&#9654;</small>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="sixty hardy" id="carte-dynamique">
+
+      {#""""""""""""""""tableau"""""""""""""""""""#}
+                        <div id="trajets-réguliers" class="js-tab-panel" style="display: block;">
+                            <table class="zebra js-clickdelegate" border="1">
+                                <colgroup>
+                                    <col>
+                                    <col>
+                                    <col width="100">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+
+                                        <th class="gd-2">Titre</th>
+                                        <th class="gd-2">Description</th>
+                                        <th class="gd-2">Datedepart</th>
+                                        <th class="gd-2">Prix</th>
+                                        <th class="gd-2">Détails</th>
+                                        <th class="gd-2">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                     {% for entity in entities %}
+                                    <tr>
+                                        <td>{{ entity.titre }}</td>
+                                        <td>{{ entity.description }}</td>
+                                        <td>{% if entity.dateDepart %}{{ entity.dateDepart|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                        <td>{{ entity.prix }}</td>
+
+                                        <td class="txt-ctr">
+
+                                            <p><a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display = 'block';
+                        document.getElementById('fade').style.display = 'block'" title="Voir plus" rel="bookmark">
+                                                          <ins class="icon plus-small"></ins>
+                                                          <span class="hidden">Voir plus</span>
+                                                      </a></p>
+                                                  <div id="light" class="white_content">
+
+                                                      <h1 class="dist regular-font uc">Details Covoiturage</h1>
+
+                                                      <table class="zebra js-clickdelegate" border="1">
+                                                          <colgroup>
+                                                              <col>
+                                                              <col>
+                                                              <col width="100">
+                                                          </colgroup>
+                                                          <tbody>
+                                                              <tr>
+                                                                  <th class="gd-2" >Titre</th>
+                                                                  <td>{{ entity.titre }}</td>
+                                                              </tr>
+                                                              <tr>
+                                                                  <th class="gd-2" >Description</th>
+                                                                  <td>{{ entity.description }}</td>
+                                                              </tr>
+                                                              <tr>
+                                                                  <th  class="gd-2">Datecreation</th>
+                                                                  <td>{{ entity.dateCreation|date('Y-m-d H:i:s') }}</td>
+                                                              </tr>
+                                                              <tr>
+                                                                  <th  class="gd-2">Datemiseajour</th>
+                                                                  <td>{{ entity.dateMiseajour|date('Y-m-d H:i:s') }}</td>
+                                                              </tr>
+                                                              <tr>
+                                                                  <th  class="gd-2">Datedepart</th>
+                                                                  <td>{{ entity.dateDepart|date('Y-m-d H:i:s') }}</td>
+                                                              </tr>
+                                                              <tr>
+                                                                  <th  class="gd-2">Heuredepart</th>
+                                                                  <td>{{ entity.heureDepart|date('Y-m-d H:i:s')}}</td>
+                                                              </tr>
+
+                                                              <tr>
+                                                                  <th  class="gd-2">Nombreplaces</th>
+                                                                  <td>{{ entity.nombrePlaces }}</td>
+                                                              </tr>
+                                                              <tr>
+                                                                  <th  class="gd-2">Prix</th>
+                                                                  <td>{{ entity.prix }}</td>
+                                                              </tr>
+                                                              <tr>
+                                                                  <th class="gd-2">Fumeur</th>
+                                                                  <td>{{ entity.fumeur }}</td>
+                                                              </tr>
+                                                              <tr>
+                                                                  <th  class="gd-2">Reserveefemmes</th>
+                                                                  <td>{{ entity.reserveeFemmes }}</td>
+                                                              </tr>
+
+                                                          </tbody>
+                                                      </table>
+
+                                                      <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display = 'none';
+                        document.getElementById('fade').style.display = 'none'">Close</a></div>
+                                                      <div id="fade" class="black_overlay"></div>
+
+
+
+
+                                                  <td>
+                                                     {# <a href=""> {{ entity.idCreateur }} reserver {{ entity.id }} </a></td>#}
+                                                          <a href="{{ path('reservation_new', { 'id': entity.id , 'idd': app.user.id }) }}"> reserver </a>
+                                                      </td>
+                                                  </tr>
+
+                                       {% endfor %}
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+ {###############################################################}
+                                        <ul>
+                                            <li>
+                                                <a href="{{ path('Mes_covoiturages') }}">
+                                                    Afficher mes covoiturages
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="clear"></div>
+                                </form>
+
+                                <div class="clear"></div>
+                            </div>
+
+                            <div class="clear"></div>
+
+                            <div id="main-nav-outer">
+                                <div id="navigation">
+                                    <ul id="main-nav" class="vanilla">
+                                        <li class="nav-item"><a class="nav-link" rel="home" title="Accueil" href="{{ path("covoiturage_accueil") }}">Accueil</a></li>{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}<li class="nav-item"><a class="nav-link" title="Mon Profile" href="{{ path('fos_user_profile_show') }}">Mon Profile</a></li>{% endif %} 
+                                        <li class="nav-item"><a class="nav-link" rel="contents" title="Les trajets" href="#">Les trajets</a></li>
+                                        <li class="nav-item"><a class="nav-link" title="La charte" href="{{ path("covoiturage_laCharte") }}">La charte</a></li>
+                                        <li class="nav-item"><a class="nav-link" title="FAQ" href="{{ path("covoiturage_faq") }}">FAQ</a></li>
+                                        <li class="nav-item"><a class="nav-link" title="Réclamations" href="{{ path("covoiturage_reclamation") }}">Réclamation</a></li>{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}<li class="nav-item"><a class="nav-link" title="Déconnecter" href="{{ path('fos_user_security_logout') }}">Déconnecter</a></li>{% else %}<li class="nav-item"><a class="nav-link" title="Déconnecter" href="{{ path('fos_user_security_login') }}">S'authentifier</a></li>{% endif %}
+                                    </ul>
+                                </div>
+                            </div>         <a href="#contenu" title="Revenir au contenu">
+                                <ins class="icon blue-car js-car" id="car-1" style="top: 47px;"></ins>
+                                <ins class="icon green-car js-car" id="car-2" style="top: 78px;"></ins>
+                                <ins class="icon pink-car js-car" id="car-3" style="top: 87px;"></ins>
+                            </a>
+                        </div>
+
+
+                    </script>
+{#
+        <h1>Covoiturages list</h1>
+
+
+
+
+
+
+        <table class="records_list" border="1">
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Description</th>
+                    <th>dateCreation</th>
+                    <th>Heuredepart</th>
+                    <th>Datedepart</th>
+                    <th>Nombreplaces</th>
+                    <th>Prix</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            <div id="madiv">   
+     {% for entity in entities %}
+                    <tr>
+                        <td><a href="{{ path('covoiturages_show', { 'id': entity.id }) }}">{{ entity.titre }}</a></td>
+                        <td>{{ entity.description }}</td>
+                        <td>{% if entity.dateCreation %}{{ entity.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{{ entity.heureDepart|date('H:i:s')}}</td>
+                        <td>{% if entity.dateDepart %}{{ entity.dateDepart|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>{{ entity.nombrePlaces}}</td>
+                        <td>{{ entity.prix }}</td>
+
+
+                    </tr>
+        {% endfor %}
+                </div>   
+            </tbody>
+        </table>
+
+        <ul>
+            <li>
+                <a href="{{ path('covoiturages_new') }}">
+                    Create a new entry
+                </a>
+            </li>
+        </ul>#}
+    {% endblock %}

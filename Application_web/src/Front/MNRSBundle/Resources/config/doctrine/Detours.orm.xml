@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Front\MNRSBundle\Entity\Detours" table="detours">
+    <indexes>
+      <index name="fk_id_covoiturage_detours" columns="id_covoiturage"/>
+      <index name="fk_id_ville_detours" columns="id_ville"/>
+    </indexes>
+    <id name="id" type="integer" column="id"/>
+    <id name="idCovoiturage" association-key="true"/>
+    <id name="idVille" association-key="true"/>
+    <one-to-one field="idVille" target-entity="Villes">
+      <join-columns>
+        <join-column name="id_ville" referenced-column-name="id"/>
+      </join-columns>
+    </one-to-one>
+    <one-to-one field="idCovoiturage" target-entity="Covoiturages">
+      <join-columns>
+        <join-column name="id_covoiturage" referenced-column-name="id"/>
+      </join-columns>
+    </one-to-one>
+  </entity>
+</doctrine-mapping>
